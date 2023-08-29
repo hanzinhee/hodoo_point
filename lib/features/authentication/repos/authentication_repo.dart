@@ -1,15 +1,19 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class AuthenticationRepository {
-  bool isLoggedIn = false;
-
-  Future<void> signOut() async {
-    isLoggedIn = false;
+class AuthenticationRepository extends Notifier<bool> {
+  void signOut() {
+    state = false;
   }
 
-  Future<void> signIn() async {
-    isLoggedIn = true;
+  void signIn() {
+    state = true;
+  }
+
+  @override
+  bool build() {
+    return false;
   }
 }
 
-final authRepo = Provider((ref) => AuthenticationRepository());
+final authRepo = NotifierProvider<AuthenticationRepository, bool>(
+    () => AuthenticationRepository());

@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 
 class NavigationService {
-  static GlobalKey<NavigatorState> rootNavigatorKey =
-      GlobalKey<NavigatorState>();
-  static GlobalKey<NavigatorState> sectionNavigatorKey =
-      GlobalKey<NavigatorState>();
-  static get rootContext => rootNavigatorKey.currentContext;
-  static get sectionContext => sectionNavigatorKey.currentContext;
+  static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+  static BuildContext get context => navigatorKey.currentContext!;
 }
