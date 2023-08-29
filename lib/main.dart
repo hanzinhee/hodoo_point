@@ -1,3 +1,7 @@
+import 'dart:io';
+
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -12,7 +16,10 @@ Future<void> main() async {
       DeviceOrientation.portraitUp,
     ],
   );
-  runApp(const ProviderScope(child: App()));
+
+  DevicePreview(
+      enabled: kIsWeb,
+      builder: (context) => const ProviderScope(child: App())); // Wrap your app
 }
 
 class App extends ConsumerWidget {

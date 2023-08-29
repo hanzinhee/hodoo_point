@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hodoo_point/constants/colors.dart';
 import 'package:hodoo_point/constants/gaps.dart';
 import 'package:hodoo_point/features/menu/menu_screen.dart';
 import 'package:hodoo_point/features/notifications/notifications_screen.dart';
-import 'package:hodoo_point/services/navigation_service.dart';
 
 class RootScaffold extends StatelessWidget {
   const RootScaffold(this.navigationShell, {super.key});

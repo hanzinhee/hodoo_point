@@ -7,7 +7,13 @@ class LoungeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: TextButton(onPressed: () {}, child: Text('라운지')),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            TextButton(onPressed: () {}, child: Text('라운지')),
+            TextField()
+          ],
+        ),
       ),
     );
   }
