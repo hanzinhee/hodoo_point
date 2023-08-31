@@ -1,5 +1,6 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -31,6 +32,8 @@ class App extends ConsumerWidget {
     });
     if (ref.watch(authRepo)) {
       return MaterialApp.router(
+        //web 에서 page view 사용시 스크롤이 안되는 문제 해결
+        scrollBehavior: AppScrollBehavior(),
         routerConfig: ref.watch(routerProvider),
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: hodooBlue),
@@ -44,4 +47,13 @@ class App extends ConsumerWidget {
       );
     }
   }
+}
+
+class AppScrollBehavior extends MaterialScrollBehavior {
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+        PointerDeviceKind.trackpad,
+      };
 }
