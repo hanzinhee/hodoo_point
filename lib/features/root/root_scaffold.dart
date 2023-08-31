@@ -1,10 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hodoo_point/constants/colors.dart';
-import 'package:hodoo_point/constants/gaps.dart';
 import 'package:hodoo_point/features/menu/menu_screen.dart';
 import 'package:hodoo_point/features/notifications/notifications_screen.dart';
+import 'package:hodoo_point/services/navigation_service.dart';
 import 'package:hodoo_point/services/unicons.dart';
 
 class RootScaffold extends StatelessWidget {
@@ -16,32 +14,30 @@ class RootScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: CustomScrollView(
-          shrinkWrap: false,
-          slivers: [
-            SliverAppBar(
-              floating: true,
-              snap: true,
-              surfaceTintColor: Colors.transparent,
-              leading: IconButton(
-                icon: Unicons.svg('fi-rr-bell'),
+      body: CustomScrollView(
+        shrinkWrap: false,
+        slivers: [
+          SliverAppBar(
+            floating: true,
+            snap: true,
+            surfaceTintColor: Colors.transparent,
+            leading: IconButton(
+              icon: Unicons.svg('fi-rr-bell'),
+              onPressed: () {
+                context.push(NotificationScreen.routePath);
+              },
+            ),
+            actions: [
+              IconButton(
+                icon: Unicons.svg('fi-rr-menu-burger'),
                 onPressed: () {
-                  context.push(NotificationScreen.routePath);
+                  context.push(MenuScreen.routePath);
                 },
               ),
-              actions: [
-                IconButton(
-                  icon: Unicons.svg('fi-rr-menu-burger'),
-                  onPressed: () {
-                    context.push(MenuScreen.routePath);
-                  },
-                ),
-              ],
-            ),
-            SliverFillRemaining(hasScrollBody: false, child: navigationShell)
-          ],
-        ),
+            ],
+          ),
+          SliverFillRemaining(hasScrollBody: false, child: navigationShell)
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: navigationShell.currentIndex,
@@ -52,30 +48,28 @@ class RootScaffold extends StatelessWidget {
         selectedLabelStyle: TextStyle(fontSize: 12),
         type: BottomNavigationBarType.fixed,
         items: [
-          BottomNavigationBarItem(
-              icon: Unicons.svg('fi-sr-star'),
-              activeIcon: Unicons.svg('fi-sr-star',
-                  color: Theme.of(context).colorScheme.primary),
-              label: '해택'),
-          BottomNavigationBarItem(
-              icon: Unicons.svg('fi-sr-shopping-bag'),
-              activeIcon: Unicons.svg('fi-sr-shopping-bag',
-                  color: Theme.of(context).colorScheme.primary),
-              label: '쇼핑'),
-          BottomNavigationBarItem(
-              icon: Unicons.svg('fi-sr-credit-card'),
-              activeIcon: Unicons.svg('fi-sr-credit-card',
-                  color: Theme.of(context).colorScheme.primary),
-              label: '결제'),
-          BottomNavigationBarItem(
-              icon: Unicons.svg('fi-sr-coffee'),
-              activeIcon: Unicons.svg('fi-sr-coffee',
-                  color: Theme.of(context).colorScheme.primary),
-              label: '라운지'),
+          _buildBarItem(uniconsName: 'fi-sr-star', label: '해택'),
+          _buildBarItem(uniconsName: 'fi-sr-shopping-bag', label: '쇼핑'),
+          _buildBarItem(uniconsName: 'fi-sr-credit-card', label: '결제'),
+          _buildBarItem(uniconsName: 'fi-sr-coffee', label: '라운지'),
         ],
         onTap: _onTap,
       ),
     );
+  }
+
+  BottomNavigationBarItem _buildBarItem({
+    required String uniconsName,
+    required String label,
+  }) {
+    final activeColor = Theme.of(NavigationService.context).colorScheme.primary;
+    return BottomNavigationBarItem(
+        icon: Unicons.svg(uniconsName,
+            padding: const EdgeInsets.symmetric(vertical: 8)),
+        activeIcon: Unicons.svg(uniconsName,
+            color: activeColor,
+            padding: const EdgeInsets.symmetric(vertical: 8)),
+        label: label);
   }
 
   void _onTap(index) {

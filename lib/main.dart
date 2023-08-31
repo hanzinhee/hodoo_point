@@ -36,7 +36,7 @@ class App extends ConsumerWidget {
         scrollBehavior: AppScrollBehavior(),
         routerConfig: ref.watch(routerProvider),
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: hodooBlue),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
           useMaterial3: true,
         ),
       );

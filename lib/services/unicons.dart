@@ -6,11 +6,12 @@ import 'package:hodoo_point/constants/gaps.dart';
 class Unicons {
   static const String path = 'assets/images/icons/unicons/';
 
-  static Widget svg(String name, {Color? color}) {
+  static Widget svg(String name,
+      {Color? color, EdgeInsets padding = EdgeInsets.zero}) {
     final ColorFilter? colorFilter =
         color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null;
     return Padding(
-      padding: const EdgeInsets.all(10),
+      padding: padding,
       child: SvgPicture.asset('$path$name.svg', colorFilter: colorFilter),
     );
   }
