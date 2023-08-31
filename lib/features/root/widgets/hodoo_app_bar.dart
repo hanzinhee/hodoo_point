@@ -10,6 +10,7 @@ class HoDooAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+      shadowColor: Colors.black26,
       floating: true,
       snap: true,
       surfaceTintColor: Colors.transparent,
