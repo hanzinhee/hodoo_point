@@ -28,15 +28,13 @@ class _LoopBannerState extends State<LoopBanner> {
   @override
   void initState() {
     controller = PageController(
-        initialPage: widget.urls.length * 2,
+        initialPage: widget.urls.length * 1000,
         viewportFraction: widget.viewportFraction);
     currentPage = widget.urls.length * 2;
 
     controller.addListener(() {
       if (controller.page! <= 1) {
         controller.jumpToPage(widget.urls.length * 2 + 1);
-      } else if (controller.page! >= widget.urls.length * 10) {
-        controller.jumpToPage(widget.urls.length * 2);
       }
 
       int roundPage = controller.page!.round();
@@ -54,6 +52,8 @@ class _LoopBannerState extends State<LoopBanner> {
 
   void autoScroll() {
     timer = Timer.periodic(const Duration(seconds: 5), (timer) {
+      // Fixed  positions.isNotEmpty, 'PageController.page cannot be accessed before a PageView is built with it.',
+      if (controller.positions.isEmpty) return;
       controller.nextPage(
           duration: const Duration(milliseconds: 300),
           curve: Curves.easeOutQuint);
