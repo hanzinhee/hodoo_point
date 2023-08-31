@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hodoo_point/features/menu/menu_screen.dart';
-import 'package:hodoo_point/features/notifications/notifications_screen.dart';
 import 'package:hodoo_point/services/navigation_service.dart';
 import 'package:hodoo_point/services/unicons.dart';
 
@@ -14,31 +12,7 @@ class RootScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        shrinkWrap: false,
-        slivers: [
-          SliverAppBar(
-            floating: true,
-            snap: true,
-            surfaceTintColor: Colors.transparent,
-            leading: IconButton(
-              icon: Unicons.svg('fi-rr-bell'),
-              onPressed: () {
-                context.push(NotificationScreen.routePath);
-              },
-            ),
-            actions: [
-              IconButton(
-                icon: Unicons.svg('fi-rr-menu-burger'),
-                onPressed: () {
-                  context.push(MenuScreen.routePath);
-                },
-              ),
-            ],
-          ),
-          SliverFillRemaining(hasScrollBody: false, child: navigationShell)
-        ],
-      ),
+      body: navigationShell,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: navigationShell.currentIndex,
         backgroundColor: Colors.white,
