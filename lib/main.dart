@@ -33,7 +33,6 @@ class App extends ConsumerWidget {
       return MaterialApp.router(
         routerConfig: ref.watch(routerProvider),
         theme: ThemeData(
-          primaryColor: Colors.black,
           colorScheme: ColorScheme.fromSeed(seedColor: hodooBlue),
           useMaterial3: true,
         ),

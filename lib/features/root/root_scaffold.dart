@@ -1,8 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hodoo_point/constants/colors.dart';
 import 'package:hodoo_point/constants/gaps.dart';
 import 'package:hodoo_point/features/menu/menu_screen.dart';
 import 'package:hodoo_point/features/notifications/notifications_screen.dart';
+import 'package:hodoo_point/services/unicons.dart';
 
 class RootScaffold extends StatelessWidget {
   const RootScaffold(this.navigationShell, {super.key});
@@ -22,41 +25,53 @@ class RootScaffold extends StatelessWidget {
               snap: true,
               surfaceTintColor: Colors.transparent,
               leading: IconButton(
-                icon: const Icon(Icons.notifications_none),
+                icon: Unicons.svg('fi-rr-bell'),
                 onPressed: () {
                   context.push(NotificationScreen.routePath);
                 },
               ),
               actions: [
                 IconButton(
-                  icon: const Icon(Icons.menu),
+                  icon: Unicons.svg('fi-rr-menu-burger'),
                   onPressed: () {
                     context.push(MenuScreen.routePath);
                   },
                 ),
               ],
             ),
-            SliverPadding(
-                padding: const EdgeInsets.symmetric(horizontal: Gaps.size2),
-                sliver: SliverFillRemaining(
-                    hasScrollBody: false, child: navigationShell))
+            SliverFillRemaining(hasScrollBody: false, child: navigationShell)
           ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: navigationShell.currentIndex,
         backgroundColor: Colors.white,
-        // selectedItemColor: hodooBlue,
         unselectedItemColor: Colors.grey,
         showUnselectedLabels: true,
         unselectedLabelStyle: TextStyle(color: Colors.grey, fontSize: 12),
         selectedLabelStyle: TextStyle(fontSize: 12),
         type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: '해택'),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_bag), label: '쇼핑'),
-          BottomNavigationBarItem(icon: Icon(Icons.payment), label: '결제'),
-          BottomNavigationBarItem(icon: Icon(Icons.coffee), label: '라운지'),
+        items: [
+          BottomNavigationBarItem(
+              icon: Unicons.svg('fi-sr-star'),
+              activeIcon: Unicons.svg('fi-sr-star',
+                  color: Theme.of(context).colorScheme.primary),
+              label: '해택'),
+          BottomNavigationBarItem(
+              icon: Unicons.svg('fi-sr-shopping-bag'),
+              activeIcon: Unicons.svg('fi-sr-shopping-bag',
+                  color: Theme.of(context).colorScheme.primary),
+              label: '쇼핑'),
+          BottomNavigationBarItem(
+              icon: Unicons.svg('fi-sr-credit-card'),
+              activeIcon: Unicons.svg('fi-sr-credit-card',
+                  color: Theme.of(context).colorScheme.primary),
+              label: '결제'),
+          BottomNavigationBarItem(
+              icon: Unicons.svg('fi-sr-coffee'),
+              activeIcon: Unicons.svg('fi-sr-coffee',
+                  color: Theme.of(context).colorScheme.primary),
+              label: '라운지'),
         ],
         onTap: _onTap,
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hodoo_point/widgets/loop_banner.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -7,13 +8,18 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        for (int i = 0; i < 100; i++)
-          Container(
-            width: double.infinity,
-            height: 100,
-            color: Colors.purple[100 * (i % 10)],
-          ),
+        Container(
+          height: 180,
+          child: LoopBanner(urls: [
+            'https://picsum.photos/400/400/?d=1',
+            'https://picsum.photos/400/400/?d=2',
+            'https://picsum.photos/400/400/?d=3',
+            'https://picsum.photos/400/400/?d=4',
+            'https://picsum.photos/400/400/?d=5',
+          ]),
+        )
       ],
     );
   }

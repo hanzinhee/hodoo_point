@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/features/root/root_scaffold.dart';
-import 'package:hodoo_point/features/authentication/repos/authentication_repo.dart';
 import 'package:hodoo_point/features/authentication/views/login_screen.dart';
 import 'package:hodoo_point/features/home/home_screen.dart';
 import 'package:hodoo_point/features/lounge/lounge_screen.dart';
 import 'package:hodoo_point/features/menu/menu_screen.dart';
 import 'package:hodoo_point/features/notifications/notifications_screen.dart';
 import 'package:hodoo_point/features/payment/payment_screen.dart';
-import 'package:hodoo_point/features/root/splash_screen.dart';
 import 'package:hodoo_point/features/shopping/shopping_screen.dart';
 import 'package:hodoo_point/services/navigation_service.dart';
 
