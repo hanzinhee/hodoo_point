@@ -4,7 +4,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hodoo_point/features/authentication/repos/authentication_repo.dart';
 import 'package:hodoo_point/router.dart';
 
 Future<void> main() async {
@@ -32,6 +31,7 @@ class App extends ConsumerWidget {
         scrollBehavior: AppScrollBehavior(),
         routerConfig: ref.watch(routerProvider),
         theme: ThemeData(
+          fontFamily: 'Pretendard',
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
           useMaterial3: true,
         ),
