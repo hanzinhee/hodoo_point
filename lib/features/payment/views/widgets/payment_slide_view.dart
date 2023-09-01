@@ -1,6 +1,12 @@
+import 'package:barcode/barcode.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/constants/gaps.dart';
+import 'package:hodoo_point/features/payment/views/widgets/point_card_sheet.dart';
 import 'package:hodoo_point/services/unicons.dart';
+import 'package:lottie/lottie.dart';
 
 class PaymentSlideView extends StatefulWidget {
   const PaymentSlideView({super.key});
@@ -13,6 +19,31 @@ class _PaymentSlideViewState extends State<PaymentSlideView> {
   final PageController controller =
       PageController(initialPage: 1, viewportFraction: 0.6);
   int currentPage = 1;
+
+  void showPointCardSheet() {
+    showGeneralDialog(
+      context: context,
+      barrierDismissible: true,
+      transitionDuration: const Duration(milliseconds: 500),
+      barrierLabel: MaterialLocalizations.of(context).dialogLabel,
+      barrierColor: Colors.black.withOpacity(0.5),
+      pageBuilder: (context, _, __) {
+        return PointCardSheet();
+      },
+      transitionBuilder: (context, animation, secondaryAnimation, child) {
+        return SlideTransition(
+          position: CurvedAnimation(
+            parent: animation,
+            curve: Curves.easeOut,
+          ).drive(Tween<Offset>(
+            begin: const Offset(0, -1.0),
+            end: Offset.zero,
+          )),
+          child: child,
+        );
+      },
+    );
+  }
 
   @override
   void initState() {
@@ -87,7 +118,9 @@ class _PaymentSlideViewState extends State<PaymentSlideView> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    showPointCardSheet();
+                  },
                   child: Container(
                     padding: const EdgeInsets.all(Gaps.size2),
                     decoration: BoxDecoration(
@@ -208,7 +241,7 @@ class _PaymentSlideViewState extends State<PaymentSlideView> {
                         color: Theme.of(context).colorScheme.primary),
                   ),
                   Gaps.h1,
-                  Text(
+                  const Text(
                     '결제수단 관리',
                     style: TextStyle(fontSize: 14),
                   )
@@ -228,7 +261,7 @@ class _PaymentSlideViewState extends State<PaymentSlideView> {
                         color: Theme.of(context).primaryColor),
                   ),
                   Gaps.h1,
-                  Text(
+                  const Text(
                     '사용처',
                     style: TextStyle(fontSize: 14),
                   )
@@ -243,7 +276,7 @@ class _PaymentSlideViewState extends State<PaymentSlideView> {
                         color: Theme.of(context).primaryColor),
                   ),
                   Gaps.h1,
-                  Text(
+                  const Text(
                     '이용내역 ',
                     style: TextStyle(fontSize: 14),
                   )
@@ -258,7 +291,7 @@ class _PaymentSlideViewState extends State<PaymentSlideView> {
                         color: Theme.of(context).primaryColor),
                   ),
                   Gaps.h1,
-                  Text(
+                  const Text(
                     '충전',
                     style: TextStyle(fontSize: 14),
                   )
@@ -268,107 +301,5 @@ class _PaymentSlideViewState extends State<PaymentSlideView> {
           ),
       ]);
     });
-
-    // PageView(
-    //   controller: controller,
-    //   children: [
-    //     Container(
-    //       margin: const EdgeInsets.symmetric(
-    //           horizontal: Gaps.size2, vertical: Gaps.size6),
-    //       decoration: BoxDecoration(
-    //         color: Colors.white,
-    //         borderRadius: BorderRadius.circular(10),
-    //         boxShadow: [
-    //           BoxShadow(
-    //             color: Colors.grey.withOpacity(0.5),
-    //             blurRadius: 10,
-    //             offset: const Offset(0, 3),
-    //           ),
-    //         ],
-    //       ),
-    //       child: Column(
-    //         children: [
-    //           Expanded(
-    //             child: Column(
-    //               mainAxisAlignment: MainAxisAlignment.center,
-    //               children: [
-    //                 Image.asset(
-    //                   'assets/images/icons/flaticon/free-icon-code-4565051.png',
-    //                   width: 50,
-    //                 ),
-    //                 Gaps.v1,
-    //                 Text('카드 등록')
-    //               ],
-    //             ),
-    //           ),
-    //           const Divider(
-    //             thickness: 0.5,
-    //           ),
-    //           Expanded(
-    //             child: Column(
-    //               mainAxisAlignment: MainAxisAlignment.center,
-    //               children: [
-    //                 Image.asset(
-    //                   'assets/images/icons/flaticon/free-icon-bank-4564970.png',
-    //                   width: 50,
-    //                 ),
-    //                 Gaps.v1,
-    //                 Text('계좌 등록')
-    //               ],
-    //             ),
-    //           )
-    //         ],
-    //       ),
-    //     ),
-    //     Container(
-    //       margin: EdgeInsets.symmetric(
-    //           horizontal: Gaps.size2, vertical: Gaps.size6),
-    //       decoration: BoxDecoration(
-    //         color: Colors.white,
-    //         borderRadius: BorderRadius.circular(10),
-    //         boxShadow: [
-    //           BoxShadow(
-    //             color: Colors.grey.withOpacity(0.5),
-    //             blurRadius: 10,
-    //             offset: const Offset(0, 3),
-    //           ),
-    //         ],
-    //       ),
-    //       child: Column(
-    //         children: [
-    //           Expanded(
-    //             child: Column(
-    //               mainAxisAlignment: MainAxisAlignment.center,
-    //               children: [
-    //                 Image.asset(
-    //                   'assets/images/icons/flaticon/free-icon-code-4565051.png',
-    //                   width: 50,
-    //                 ),
-    //                 Gaps.v1,
-    //                 Text('카드 등록')
-    //               ],
-    //             ),
-    //           ),
-    //           const Divider(
-    //             thickness: 0.5,
-    //           ),
-    //           Expanded(
-    //             child: Column(
-    //               mainAxisAlignment: MainAxisAlignment.center,
-    //               children: [
-    //                 Image.asset(
-    //                   'assets/images/icons/flaticon/free-icon-bank-4564970.png',
-    //                   width: 50,
-    //                 ),
-    //                 Gaps.v1,
-    //                 Text('계좌 등록')
-    //               ],
-    //             ),
-    //           )
-    //         ],
-    //       ),
-    //     ),
-    //   ],
-    // );
   }
 }
