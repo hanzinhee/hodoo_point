@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:hodoo_point/constants/gaps.dart';
 
 class Unicons {
   static const String path = 'assets/images/icons/unicons/';

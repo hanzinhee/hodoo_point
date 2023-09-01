@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hodoo_point/constants/gaps.dart';
 import 'package:hodoo_point/services/unicons.dart';
@@ -65,7 +64,7 @@ class _PaymentSlideViewState extends State<PaymentSlideView> {
                                 width: 60,
                               ),
                               Gaps.v1,
-                              Text('카드 등록')
+                              const Text('카드 등록')
                             ],
                           ),
                         ),
@@ -81,7 +80,7 @@ class _PaymentSlideViewState extends State<PaymentSlideView> {
                                 width: 60,
                               ),
                               Gaps.v1,
-                              Text('계좌 등록')
+                              const Text('계좌 등록')
                             ],
                           ),
                         )
@@ -94,7 +93,7 @@ class _PaymentSlideViewState extends State<PaymentSlideView> {
                 child: AspectRatio(
                   aspectRatio: 1 / 1.58,
                   child: Container(
-                    padding: EdgeInsets.all(Gaps.size2),
+                    padding: const EdgeInsets.all(Gaps.size2),
                     decoration: BoxDecoration(
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(10),
@@ -107,7 +106,7 @@ class _PaymentSlideViewState extends State<PaymentSlideView> {
                       ],
                     ),
                     child: Stack(children: [
-                      Column(
+                      const Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -137,7 +136,7 @@ class _PaymentSlideViewState extends State<PaymentSlideView> {
                               color: Colors.white24,
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: Text(
+                            child: const Text(
                               '858P',
                               style: TextStyle(
                                   fontSize: 30,
@@ -158,7 +157,7 @@ class _PaymentSlideViewState extends State<PaymentSlideView> {
               transform: active
                   ? Matrix4.identity()
                   : (Matrix4.identity()..scale(0.8, 0.8)),
-              padding: EdgeInsets.symmetric(horizontal: Gaps.size3),
+              padding: const EdgeInsets.symmetric(horizontal: Gaps.size3),
               duration: const Duration(milliseconds: 300),
               child: items[index],
             );

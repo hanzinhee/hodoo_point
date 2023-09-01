@@ -4,7 +4,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hodoo_point/constants/colors.dart';
 import 'package:hodoo_point/features/authentication/repos/authentication_repo.dart';
 import 'package:hodoo_point/router.dart';
 
@@ -27,10 +26,7 @@ class App extends ConsumerWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Future.delayed(const Duration(seconds: 1), () {
-      ref.read(authRepo.notifier).signIn();
-    });
-    if (ref.watch(authRepo)) {
+    if (true) {
       return MaterialApp.router(
         //web 에서 page view 사용시 스크롤이 안되는 문제 해결
         scrollBehavior: AppScrollBehavior(),
