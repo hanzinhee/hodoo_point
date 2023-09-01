@@ -11,7 +11,7 @@ class PaymentSlideView extends StatefulWidget {
 
 class _PaymentSlideViewState extends State<PaymentSlideView> {
   final PageController controller =
-      PageController(initialPage: 1, viewportFraction: 0.7);
+      PageController(initialPage: 1, viewportFraction: 0.6);
   int currentPage = 1;
 
   @override
@@ -32,70 +32,73 @@ class _PaymentSlideViewState extends State<PaymentSlideView> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      Expanded(
-        child: PageView.builder(
-          itemBuilder: (_, index) {
-            final List<Widget> items = [
-              Center(
-                child: AspectRatio(
-                  aspectRatio: 1 / 1.58,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          blurRadius: 10,
-                          offset: const Offset(0, 3),
+    return LayoutBuilder(builder: (context, constraints) {
+      return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        SizedBox(
+          height: constraints.maxHeight * 0.6,
+          child: PageView.builder(
+            itemBuilder: (_, index) {
+              final List<Widget> items = [
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        blurRadius: 10,
+                        offset: const Offset(0, 3),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'assets/images/icons/flaticon/free-icon-code-4565051.png',
+                              width: 60,
+                            ),
+                            Gaps.v1,
+                            const Text('카드 등록')
+                          ],
                         ),
-                      ],
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset(
-                                'assets/images/icons/flaticon/free-icon-code-4565051.png',
-                                width: 60,
-                              ),
-                              Gaps.v1,
-                              const Text('카드 등록')
-                            ],
-                          ),
+                      ),
+                      const Divider(
+                        thickness: 0.5,
+                      ),
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'assets/images/icons/flaticon/free-icon-bank-4564970.png',
+                              width: 60,
+                            ),
+                            Gaps.v1,
+                            const Text('계좌 등록')
+                          ],
                         ),
-                        const Divider(
-                          thickness: 0.5,
-                        ),
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset(
-                                'assets/images/icons/flaticon/free-icon-bank-4564970.png',
-                                width: 60,
-                              ),
-                              Gaps.v1,
-                              const Text('계좌 등록')
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
+                      )
+                    ],
                   ),
                 ),
-              ),
-              Center(
-                child: AspectRatio(
-                  aspectRatio: 1 / 1.58,
+                GestureDetector(
+                  onTap: () {},
                   child: Container(
                     padding: const EdgeInsets.all(Gaps.size2),
                     decoration: BoxDecoration(
-                      color: Colors.blue,
+                      gradient: LinearGradient(
+                        begin: Alignment.bottomLeft,
+                        end: Alignment.topRight,
+                        colors: [
+                          Colors.blue[700]!,
+                          Colors.blue[100]!,
+                        ],
+                      ),
                       borderRadius: BorderRadius.circular(10),
                       boxShadow: [
                         BoxShadow(
@@ -139,8 +142,8 @@ class _PaymentSlideViewState extends State<PaymentSlideView> {
                             child: const Text(
                               '858P',
                               style: TextStyle(
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.bold,
+                                  fontSize: 28,
+                                  fontWeight: FontWeight.w600,
                                   color: Colors.white),
                             ),
                           );
@@ -148,47 +151,123 @@ class _PaymentSlideViewState extends State<PaymentSlideView> {
                       ),
                     ]),
                   ),
-                ),
-              )
-            ];
-            bool active = index == currentPage;
+                )
+              ];
+              bool active = index == currentPage;
 
-            return AnimatedContainer(
-              transform: active
-                  ? Matrix4.identity()
-                  : (Matrix4.identity()..scale(0.8, 0.8)),
-              padding: const EdgeInsets.symmetric(horizontal: Gaps.size3),
-              duration: const Duration(milliseconds: 300),
-              child: items[index],
-            );
-          },
-          itemCount: 2,
-          controller: controller,
+              return AnimatedContainer(
+                alignment: Alignment.center,
+                transformAlignment: Alignment.center,
+                transform: active
+                    ? Matrix4.identity()
+                    : (Matrix4.identity()..scale(0.8)),
+                duration: const Duration(milliseconds: 300),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: Gaps.size2),
+                  child:
+                      AspectRatio(aspectRatio: 1 / 1.58, child: items[index]),
+                ),
+              );
+            },
+            itemCount: 2,
+            controller: controller,
+          ),
         ),
-      ),
-      Gaps.v2,
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            width: 15,
-            height: 15,
-            child: Unicons.svg(
-              'fi-rr-add',
-              color: currentPage == 0 ? Colors.blue : Colors.grey,
+        Gaps.v3,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 15,
+              height: 15,
+              child: Unicons.svg(
+                'fi-rr-add',
+                color: currentPage == 0 ? Colors.blue : Colors.grey,
+              ),
             ),
+            Gaps.h1,
+            Container(
+              width: 10,
+              height: 10,
+              decoration: BoxDecoration(
+                  color: currentPage == 1 ? Colors.blue : Colors.grey,
+                  borderRadius: BorderRadius.circular(10)),
+            ),
+          ],
+        ),
+        Gaps.v5,
+        if (currentPage == 0)
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                children: [
+                  SizedBox(
+                    width: 16,
+                    child: Unicons.svg('fi-rr-settings',
+                        color: Theme.of(context).colorScheme.primary),
+                  ),
+                  Gaps.h1,
+                  Text(
+                    '결제수단 관리',
+                    style: TextStyle(fontSize: 14),
+                  )
+                ],
+              ),
+            ],
           ),
-          Gaps.h1,
-          Container(
-            width: 10,
-            height: 10,
-            decoration: BoxDecoration(
-                color: currentPage == 1 ? Colors.blue : Colors.grey,
-                borderRadius: BorderRadius.circular(10)),
+        if (currentPage == 1)
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                children: [
+                  SizedBox(
+                    width: 16,
+                    child: Unicons.svg('fi-rr-marker',
+                        color: Theme.of(context).primaryColor),
+                  ),
+                  Gaps.h1,
+                  Text(
+                    '사용처',
+                    style: TextStyle(fontSize: 14),
+                  )
+                ],
+              ),
+              Gaps.h2,
+              Row(
+                children: [
+                  SizedBox(
+                    width: 16,
+                    child: Unicons.svg('fi-rr-chart-pie-alt',
+                        color: Theme.of(context).primaryColor),
+                  ),
+                  Gaps.h1,
+                  Text(
+                    '이용내역 ',
+                    style: TextStyle(fontSize: 14),
+                  )
+                ],
+              ),
+              Gaps.h2,
+              Row(
+                children: [
+                  SizedBox(
+                    width: 16,
+                    child: Unicons.svg('fi-rr-receipt',
+                        color: Theme.of(context).primaryColor),
+                  ),
+                  Gaps.h1,
+                  Text(
+                    '충전',
+                    style: TextStyle(fontSize: 14),
+                  )
+                ],
+              ),
+            ],
           ),
-        ],
-      )
-    ]);
+      ]);
+    });
 
     // PageView(
     //   controller: controller,

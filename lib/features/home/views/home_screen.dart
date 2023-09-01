@@ -5,6 +5,7 @@ import 'package:hodoo_point/constants/section_divider.dart';
 import 'package:hodoo_point/features/home/views/widgets/home_member.dart';
 import 'package:hodoo_point/features/home/views/widgets/home_section_column.dart';
 import 'package:hodoo_point/features/root/widgets/hodoo_app_bar.dart';
+import 'package:hodoo_point/services/unicons.dart';
 import 'package:hodoo_point/widgets/loop_banner.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -15,7 +16,14 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        const HoDooAppBar(),
+        HoDooAppBar(
+          actions: [
+            IconButton(
+              icon: Unicons.svg('fi-rr-search'),
+              onPressed: () {},
+            ),
+          ],
+        ),
         SliverList(
             delegate: SliverChildListDelegate([
           Container(
