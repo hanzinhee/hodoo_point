@@ -92,7 +92,57 @@ class ShoppingScreen extends StatelessWidget {
             ),
           ),
           Dividers.section,
-          ShoppingCategoryTabBar()
+          const ShoppingCategoryTabBar(),
+          GridView.count(
+            padding: const EdgeInsets.all(Gaps.size2),
+            physics: const NeverScrollableScrollPhysics(),
+            crossAxisCount: 2,
+            shrinkWrap: true,
+            childAspectRatio: 4 / 7,
+            mainAxisSpacing: 16,
+            crossAxisSpacing: 16,
+            children: [
+              for (int i = 0; i < 20; i++)
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Center(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: CachedNetworkImage(
+                              imageUrl: 'https://picsum.photos/400/400/?vv=$i'),
+                        ),
+                      ),
+                    ),
+                    const Text('원데이 홍삼 골드 50ml * 30포', style: TextStyle()),
+                    const Text('25,800원',
+                        style: TextStyle(
+                            letterSpacing: 0.3,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16,
+                            color: Colors.blue)),
+                    Row(
+                      children: [
+                        const Text(
+                          '90%',
+                          style: TextStyle(
+                            color: Colors.red,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Gaps.h1,
+                        Text('596,000',
+                            style: TextStyle(
+                                fontSize: 12,
+                                decoration: TextDecoration.lineThrough,
+                                color: Colors.grey[700]))
+                      ],
+                    )
+                  ],
+                )
+            ],
+          )
         ]))
       ],
     );
@@ -148,7 +198,7 @@ class _ShoppingCategoryTabBarState extends State<ShoppingCategoryTabBar> {
                         alignment: Alignment.bottomCenter,
                         child: Container(
                           height: 3,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Colors.blueAccent,
                           ),
                         ),

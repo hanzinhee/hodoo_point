@@ -8,7 +8,7 @@ import 'package:hodoo_point/features/authentication/views/login_screen.dart';
 import 'package:hodoo_point/features/lounge/lounge_screen.dart';
 import 'package:hodoo_point/features/menu/menu_screen.dart';
 import 'package:hodoo_point/features/notifications/notifications_screen.dart';
-import 'package:hodoo_point/features/shopping/shopping_screen.dart';
+import 'package:hodoo_point/features/shopping/views/shopping_screen.dart';
 import 'package:hodoo_point/services/navigation_service.dart';
 
 final routerProvider = Provider((ref) {
