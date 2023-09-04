@@ -22,7 +22,8 @@ class _PointCardSheetState extends State<PointCardSheet> {
     return Align(
       alignment: Alignment.topCenter,
       child: Material(
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: const BorderRadius.horizontal(
+            left: Radius.circular(30), right: Radius.circular(30)),
         child: SafeArea(
           bottom: false,
           child: Padding(

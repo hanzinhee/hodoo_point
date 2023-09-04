@@ -1,12 +1,7 @@
-import 'package:barcode/barcode.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/constants/gaps.dart';
 import 'package:hodoo_point/features/payment/views/widgets/point_card_sheet.dart';
 import 'package:hodoo_point/services/unicons.dart';
-import 'package:lottie/lottie.dart';
 
 class PaymentSlideView extends StatefulWidget {
   const PaymentSlideView({super.key});
@@ -28,7 +23,7 @@ class _PaymentSlideViewState extends State<PaymentSlideView> {
       barrierLabel: MaterialLocalizations.of(context).dialogLabel,
       barrierColor: Colors.black.withOpacity(0.5),
       pageBuilder: (context, _, __) {
-        return PointCardSheet();
+        return const PointCardSheet();
       },
       transitionBuilder: (context, animation, secondaryAnimation, child) {
         return SlideTransition(
