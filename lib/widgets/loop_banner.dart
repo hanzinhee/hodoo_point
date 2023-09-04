@@ -11,6 +11,7 @@ class LoopBanner extends StatefulWidget {
       this.viewportFraction = 0.9,
       this.margin = const EdgeInsets.symmetric(horizontal: Gaps.size1),
       this.borderRadius = const BorderRadius.all(Radius.circular(8))});
+
   final List<String> urls;
   final double viewportFraction;
   final EdgeInsets margin;

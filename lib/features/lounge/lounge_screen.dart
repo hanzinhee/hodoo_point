@@ -5,15 +5,9 @@ class LoungeScreen extends StatelessWidget {
   static String routePath = '/lounge';
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            TextButton(onPressed: () {}, child: Text('라운지')),
-            TextField()
-          ],
-        ),
+        child: Text('라운지'),
       ),
     );
   }
