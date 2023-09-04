@@ -28,7 +28,7 @@ class App extends ConsumerWidget {
     if (true) {
       return MaterialApp.router(
         //web 에서 page view 사용시 스크롤이 안되는 문제 해결
-        scrollBehavior: AppScrollBehavior(),
+        scrollBehavior: ForWebScrollBehavior(),
         routerConfig: ref.watch(routerProvider),
         theme: ThemeData(
           fontFamily: 'Pretendard',
@@ -45,7 +45,7 @@ class App extends ConsumerWidget {
   }
 }
 
-class AppScrollBehavior extends MaterialScrollBehavior {
+class ForWebScrollBehavior extends MaterialScrollBehavior {
   @override
   Set<PointerDeviceKind> get dragDevices => {
         PointerDeviceKind.touch,
