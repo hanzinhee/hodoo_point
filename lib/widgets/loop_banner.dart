@@ -10,12 +10,14 @@ class LoopBanner extends StatefulWidget {
       required this.urls,
       this.viewportFraction = 0.9,
       this.margin = const EdgeInsets.symmetric(horizontal: Gaps.size1),
-      this.borderRadius = const BorderRadius.all(Radius.circular(8))});
+      this.borderRadius = const BorderRadius.all(Radius.circular(8)),
+      this.indicatorRight = Gaps.size1});
 
   final List<String> urls;
   final double viewportFraction;
   final EdgeInsets margin;
   final BorderRadiusGeometry borderRadius;
+  final double indicatorRight;
 
   @override
   State<LoopBanner> createState() => _LoopBannerState();
@@ -105,7 +107,7 @@ class _LoopBannerState extends State<LoopBanner> {
             }),
         Positioned(
           bottom: 8,
-          right: 36,
+          right: widget.indicatorRight,
           child: Row(
             children: [
               Container(

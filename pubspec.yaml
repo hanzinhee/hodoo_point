@@ -43,6 +43,7 @@ dependencies:
   shimmer: ^3.0.0
   barcode: ^2.2.4
   lottie: ^2.6.0
+  scrollable_positioned_list: ^0.3.8
 
 dev_dependencies:
   flutter_test:
