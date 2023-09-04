@@ -3,15 +3,15 @@ import 'package:hodoo_point/constants/gaps.dart';
 import 'package:hodoo_point/constants/section_divider.dart';
 import 'package:hodoo_point/services/unicons.dart';
 
-class HomeSectionColumn extends StatelessWidget {
-  const HomeSectionColumn(
+class HomeSectionContainer extends StatelessWidget {
+  const HomeSectionContainer(
       {super.key,
       required this.title,
-      required this.children,
+      required this.child,
       this.routePath,
       this.isLast = false});
   final String title;
-  final List<Widget> children;
+  final Widget child;
   final String? routePath;
   final bool isLast;
 
@@ -39,7 +39,7 @@ class HomeSectionColumn extends StatelessWidget {
           ),
         ),
         Gaps.v2,
-        ...children,
+        child,
         Gaps.v2,
         if (!isLast) Dividers.section,
       ],
