@@ -301,7 +301,7 @@ class HomeScreen extends StatelessWidget {
                             ),
                             Text(
                               items[index]['subTitle'] as String,
-                              style: TextStyle(),
+                              style: const TextStyle(),
                             ),
                           ],
                         ),
@@ -321,33 +321,20 @@ class HomeScreen extends StatelessWidget {
           HomeSectionContainer(
             title: '호두 플레이',
             isLast: true,
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(Gaps.size2),
-                  child: Row(
-                    children: List.generate(2, (index) {
-                      return Expanded(
-                        child: Container(
-                          height: 120,
-                          margin: (index % 2) == 0
-                              ? const EdgeInsets.only(right: Gaps.size2)
-                              : null,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8),
-                            child: CachedNetworkImage(
-                              imageUrl:
-                                  'https://picsum.photos/400/400/?w=$index',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      );
-                    }),
-                  ),
-                )
-              ],
-            ),
+            child: GridView.count(
+                padding: const EdgeInsets.symmetric(horizontal: Gaps.size2),
+                physics: const NeverScrollableScrollPhysics(),
+                crossAxisCount: 2,
+                shrinkWrap: true,
+                mainAxisSpacing: Gaps.size2,
+                crossAxisSpacing: Gaps.size2,
+                childAspectRatio: 6 / 5,
+                children: [
+                  for (int i = 0; i < 2; i++)
+                    HodooPlayThumbnail(
+                        title: '타이틀',
+                        imageUrl: 'https://picsum.photos/400/400/?w=$i')
+                ]),
           ),
           Container(
             padding: const EdgeInsets.symmetric(
@@ -370,6 +357,60 @@ class HomeScreen extends StatelessWidget {
             ),
           )
         ])),
+      ],
+    );
+  }
+}
+
+class HodooPlayThumbnail extends StatelessWidget {
+  const HodooPlayThumbnail({
+    super.key,
+    required this.imageUrl,
+    required this.title,
+  });
+  final String imageUrl;
+  final String? title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                CachedNetworkImage(
+                  width: double.infinity,
+                  imageUrl: imageUrl,
+                  fit: BoxFit.cover,
+                ),
+                LayoutBuilder(builder: (context, constraints) {
+                  return Container(
+                      alignment: Alignment.center,
+                      width: double.infinity,
+                      height: constraints.maxHeight * 0.3,
+                      decoration: const BoxDecoration(
+                        color: Colors.blueAccent,
+                      ),
+                      child: const Text(
+                        '참여 포인트 적립',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600),
+                      ));
+                })
+              ],
+            ),
+          ),
+        ),
+        if (title != null) ...[
+          Gaps.v2,
+          Text(title!, style: const TextStyle(fontSize: 16))
+        ]
       ],
     );
   }
