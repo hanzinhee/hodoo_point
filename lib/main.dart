@@ -31,10 +31,38 @@ class App extends ConsumerWidget {
         scrollBehavior: ForWebScrollBehavior(),
         routerConfig: ref.watch(routerProvider),
         theme: ThemeData(
-          fontFamily: 'Pretendard',
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
-          useMaterial3: true,
-        ),
+            fontFamily: 'Pretendard',
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
+            useMaterial3: true,
+            textSelectionTheme:
+                const TextSelectionThemeData(cursorColor: Colors.blueAccent),
+            elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ElevatedButton.styleFrom(
+                elevation: 0,
+                backgroundColor: Colors.blueAccent,
+                foregroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+            ),
+            inputDecorationTheme: InputDecorationTheme(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: BorderSide(
+                  color: Colors.grey[300]!,
+                ),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: const BorderSide(
+                  color: Colors.blueAccent,
+                ),
+              ),
+            )),
       );
     } else {
       return Material(
