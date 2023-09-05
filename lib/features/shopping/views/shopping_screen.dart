@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:hodoo_point/constants/gaps.dart';
 import 'package:hodoo_point/constants/section_divider.dart';
 import 'package:hodoo_point/features/root/widgets/hodoo_app_bar.dart';
+import 'package:hodoo_point/features/shopping/views/widgets/shopping_category_tab_bar.dart';
 import 'package:hodoo_point/services/unicons.dart';
 import 'package:hodoo_point/widgets/loop_banner.dart';
-import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class ShoppingScreen extends StatelessWidget {
   const ShoppingScreen({super.key});
@@ -51,164 +51,115 @@ class ShoppingScreen extends StatelessWidget {
           ],
         ),
         SliverList(
-            delegate: SliverChildListDelegate([
-          SizedBox(
-            height: 200,
-            child: LoopBanner(
-              urls: [
-                for (int i = 0; i < 5; i++)
-                  'https://picsum.photos/400/400/?shop=$i',
-              ],
-              viewportFraction: 1,
-              margin: EdgeInsets.zero,
-              borderRadius: BorderRadius.zero,
-              indicatorRight: Gaps.size1,
+          delegate: SliverChildListDelegate([
+            SizedBox(
+              height: 200,
+              child: LoopBanner(
+                urls: [
+                  for (int i = 0; i < 5; i++)
+                    'https://picsum.photos/400/400/?shop=$i',
+                ],
+                viewportFraction: 1,
+                margin: EdgeInsets.zero,
+                borderRadius: BorderRadius.zero,
+                indicatorRight: Gaps.size1,
+              ),
             ),
-          ),
-          SizedBox(
-            height: 200,
-            child: GridView.count(
-              padding: const EdgeInsets.all(Gaps.size1),
-              scrollDirection: Axis.horizontal,
-              crossAxisCount: 2,
-              children: [
-                for (int i = 0; i < 20; i++)
-                  Column(
-                    children: [
-                      Expanded(
-                        child: Image.asset(
-                          categoryPngs[i],
-                          width: 35,
-                        ),
-                      ),
-                      Text(
-                        '카테고리 $i',
-                        style: const TextStyle(fontSize: 12),
-                      ),
-                      Gaps.v2
-                    ],
-                  ),
-              ],
-            ),
-          ),
-          Dividers.section,
-          const ShoppingCategoryTabBar(),
-          GridView.count(
-            padding: const EdgeInsets.all(Gaps.size2),
-            physics: const NeverScrollableScrollPhysics(),
-            crossAxisCount: 2,
-            shrinkWrap: true,
-            childAspectRatio: 4 / 7,
-            mainAxisSpacing: 16,
-            crossAxisSpacing: 16,
-            children: [
-              for (int i = 0; i < 20; i++)
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: Center(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: CachedNetworkImage(
-                              imageUrl: 'https://picsum.photos/400/400/?vv=$i'),
-                        ),
-                      ),
-                    ),
-                    const Text('원데이 홍삼 골드 50ml * 30포', style: TextStyle()),
-                    const Text('25,800원',
-                        style: TextStyle(
-                            letterSpacing: 0.3,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16,
-                            color: Colors.blue)),
-                    Row(
+            SizedBox(
+              height: 200,
+              child: GridView.count(
+                padding: const EdgeInsets.all(Gaps.size1),
+                scrollDirection: Axis.horizontal,
+                crossAxisCount: 2,
+                children: [
+                  for (int i = 0; i < 20; i++)
+                    Column(
                       children: [
-                        const Text(
-                          '90%',
-                          style: TextStyle(
-                            color: Colors.red,
-                            fontWeight: FontWeight.w600,
+                        Expanded(
+                          child: Image.asset(
+                            categoryPngs[i],
+                            width: 35,
                           ),
                         ),
-                        Gaps.h1,
-                        Text('596,000',
-                            style: TextStyle(
-                                fontSize: 12,
-                                decoration: TextDecoration.lineThrough,
-                                color: Colors.grey[700]))
+                        Text(
+                          '카테고리 $i',
+                          style: const TextStyle(fontSize: 12),
+                        ),
+                        Gaps.v2
                       ],
-                    )
-                  ],
-                )
-            ],
-          )
+                    ),
+                ],
+              ),
+            ),
+            Dividers.section
+          ]),
+        ),
+        SliverPersistentHeader(
+            pinned: true, delegate: ShoppingTabBarSliverHeader()),
+        SliverList(
+            delegate: SliverChildListDelegate([
+          Container(
+            margin: const EdgeInsets.all(Gaps.size2),
+            child: Column(
+              children: [
+                for (int i = 0; i < 11; i = i + 2)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: Gaps.size2),
+                    child: Row(
+                      children: [
+                        for (int j = 0; j < 2; j++)
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                  right: j == 0 ? Gaps.size1 : 0,
+                                  left: j == 1 ? Gaps.size1 : 0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(8),
+                                    child: CachedNetworkImage(
+                                        imageUrl:
+                                            'https://picsum.photos/500/500/?vv=${i + j}'),
+                                  ),
+                                  const Text('원데이 홍삼 골드 50ml * 30포',
+                                      style: TextStyle()),
+                                  const Text('25,800원',
+                                      style: TextStyle(
+                                          letterSpacing: 0.3,
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 16,
+                                          color: Colors.blue)),
+                                  Row(
+                                    children: [
+                                      const Text(
+                                        '90%',
+                                        style: TextStyle(
+                                          color: Colors.red,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      Gaps.h1,
+                                      Text('596,000',
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              decoration:
+                                                  TextDecoration.lineThrough,
+                                              color: Colors.grey[700]))
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                      ],
+                    ),
+                  )
+              ],
+            ),
+          ),
         ]))
       ],
-    );
-  }
-}
-
-class ShoppingCategoryTabBar extends StatefulWidget {
-  const ShoppingCategoryTabBar({
-    super.key,
-  });
-
-  @override
-  State<ShoppingCategoryTabBar> createState() => _ShoppingCategoryTabBarState();
-}
-
-class _ShoppingCategoryTabBarState extends State<ShoppingCategoryTabBar> {
-  final ItemScrollController itemScrollController = ItemScrollController();
-  int currentIndex = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 45,
-      decoration: BoxDecoration(
-          border: Border(
-        bottom: BorderSide(
-          color: Colors.grey[300]!,
-        ),
-      )),
-      child: ScrollablePositionedList.builder(
-        physics: const ClampingScrollPhysics(),
-        scrollDirection: Axis.horizontal,
-        itemCount: 10,
-        itemBuilder: (context, index) => GestureDetector(
-            onTap: () {
-              setState(() {
-                currentIndex = index;
-                itemScrollController.scrollTo(
-                  index: index,
-                  duration: const Duration(milliseconds: 300),
-                  // curve: Curves.easeInOutCubic
-                );
-              });
-            },
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: Gaps.size1),
-              child: IntrinsicWidth(
-                child: Stack(
-                  children: [
-                    Center(child: Text('Shopping${index + 1}')),
-                    if (index == currentIndex)
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Container(
-                          height: 3,
-                          decoration: const BoxDecoration(
-                            color: Colors.blueAccent,
-                          ),
-                        ),
-                      )
-                  ],
-                ),
-              ),
-            )),
-        itemScrollController: itemScrollController,
-      ),
     );
   }
 }

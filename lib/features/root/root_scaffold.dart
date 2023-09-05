@@ -12,7 +12,7 @@ class RootScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: navigationShell,
+      body: SafeArea(child: navigationShell),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: navigationShell.currentIndex,
         backgroundColor: Colors.white,
