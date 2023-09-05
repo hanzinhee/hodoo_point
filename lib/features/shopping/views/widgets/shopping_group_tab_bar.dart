@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:hodoo_point/constants/gaps.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
-class ShoppingCategoryTabBar extends StatefulWidget {
-  const ShoppingCategoryTabBar({
+class ShoppingGroupTabBar extends StatefulWidget {
+  const ShoppingGroupTabBar({
     super.key,
   });
 
   @override
-  State<ShoppingCategoryTabBar> createState() => _ShoppingCategoryTabBarState();
+  State<ShoppingGroupTabBar> createState() => _ShoppingGroupTabBarState();
 }
 
-class _ShoppingCategoryTabBarState extends State<ShoppingCategoryTabBar> {
+class _ShoppingGroupTabBarState extends State<ShoppingGroupTabBar> {
   final ItemScrollController itemScrollController = ItemScrollController();
   int currentIndex = 0;
 
@@ -66,13 +66,13 @@ class _ShoppingCategoryTabBarState extends State<ShoppingCategoryTabBar> {
   }
 }
 
-class ShoppingTabBarSliverHeader extends SliverPersistentHeaderDelegate {
-  const ShoppingTabBarSliverHeader();
+class ShoppingGroupTabBarSliverHeader extends SliverPersistentHeaderDelegate {
+  const ShoppingGroupTabBarSliverHeader();
 
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return const ShoppingCategoryTabBar();
+    return const ShoppingGroupTabBar();
   }
 
   @override

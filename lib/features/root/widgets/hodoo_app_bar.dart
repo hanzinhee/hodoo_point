@@ -5,18 +5,24 @@ import 'package:hodoo_point/features/notifications/notifications_screen.dart';
 import 'package:hodoo_point/services/unicons.dart';
 
 class HoDooAppBar extends StatelessWidget {
-  const HoDooAppBar({super.key, this.actions, this.backgroundColor});
+  const HoDooAppBar(
+      {super.key,
+      this.actions,
+      this.backgroundColor,
+      this.scrolledUnderElevation});
   final List<Widget>? actions;
   final Color? backgroundColor;
+  final double? scrolledUnderElevation;
 
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+      scrolledUnderElevation: scrolledUnderElevation,
       backgroundColor: backgroundColor,
+      surfaceTintColor: Colors.transparent,
       shadowColor: Colors.black26,
       floating: true,
       snap: true,
-      surfaceTintColor: Colors.transparent,
       leading: IconButton(
         icon: Unicons.svg('fi-rr-bell'),
         onPressed: () {
