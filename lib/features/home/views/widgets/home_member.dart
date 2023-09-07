@@ -335,7 +335,9 @@ class HomeMember extends ConsumerWidget {
                           Gaps.h1,
                           Expanded(
                             child: ElevatedButton.icon(
-                              onPressed: () {},
+                              onPressed: () {
+                                context.push('/sign-up');
+                              },
                               style: ElevatedButton.styleFrom(
                                 textStyle: const TextStyle(fontSize: 16),
                                 padding: const EdgeInsets.symmetric(

@@ -109,17 +109,17 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               children: [
                 ClipOval(
                     child: Image.asset(
-                  'assets/images/icons/logins/apple.png',
+                  'assets/images/icons/company/apple.png',
                   width: 44,
                 )),
                 ClipOval(
                     child: Image.asset(
-                  'assets/images/icons/logins/kakao.png',
+                  'assets/images/icons/company/kakao.png',
                   width: 44,
                 )),
                 ClipOval(
                     child: Image.asset(
-                  'assets/images/icons/logins/naver.png',
+                  'assets/images/icons/company/naver.png',
                   width: 44,
                 )),
               ],
@@ -132,7 +132,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     style: TextStyle(color: Colors.grey)),
                 TextButton(
                     onPressed: () {
-                      context.go('/signup');
+                      context.push('/sign-up');
                     },
                     style: TextButton.styleFrom(
                       padding: EdgeInsets.zero,

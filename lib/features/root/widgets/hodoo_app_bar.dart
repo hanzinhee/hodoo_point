@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hodoo_point/features/menu/menu_screen.dart';
+import 'package:hodoo_point/features/menu/views/menu_screen.dart';
 import 'package:hodoo_point/features/notifications/notifications_screen.dart';
 import 'package:hodoo_point/services/unicons.dart';
 
