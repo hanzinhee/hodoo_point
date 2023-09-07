@@ -23,7 +23,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       appBar: HodooAppBar(),
       body: Padding(
         padding: const EdgeInsets.all(Gaps.size2),
-        child: Column(
+        child: ListView(
+          shrinkWrap: true,
           children: [
             const Text(
               'HODOO POINT',
@@ -46,24 +47,32 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             Gaps.v1,
             Row(
               children: [
-                Row(
-                  children: [
-                    Checkbox(
-                      value: checkedKeepLogin,
-                      checkColor: Colors.blueAccent,
-                      activeColor: Colors.transparent,
-                      side: BorderSide(color: Colors.grey[400]!),
-                      onChanged: (value) {
-                        setState(() {
-                          checkedKeepLogin = value!;
-                        });
-                      },
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          side: BorderSide(color: Colors.grey[400]!)),
-                    ),
-                    const Text('로그인 유지')
-                  ],
+                InkWell(
+                  splashFactory: NoSplash.splashFactory,
+                  onTap: () {
+                    setState(() {
+                      checkedKeepLogin = !checkedKeepLogin;
+                    });
+                  },
+                  child: Row(
+                    children: [
+                      Checkbox(
+                        value: checkedKeepLogin,
+                        checkColor: Colors.blueAccent,
+                        activeColor: Colors.transparent,
+                        side: BorderSide(color: Colors.grey[400]!),
+                        onChanged: (value) {
+                          setState(() {
+                            checkedKeepLogin = value!;
+                          });
+                        },
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            side: BorderSide(color: Colors.grey[400]!)),
+                      ),
+                      const Text('로그인 유지')
+                    ],
+                  ),
                 ),
                 const Spacer(),
                 GestureDetector(
@@ -115,7 +124,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 )),
               ],
             ),
-            const Spacer(),
+            Gaps.v4,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
