@@ -23,7 +23,7 @@ class SignUpScreen extends StatelessWidget {
           const Text('호두 포인트의 해택을 누리세요.'),
           Gaps.v6,
           Container(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(12),
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: Colors.black,
@@ -41,7 +41,7 @@ class SignUpScreen extends StatelessWidget {
           ),
           Gaps.v1,
           Container(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(12),
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: Color(0xff03C75A),
@@ -59,7 +59,7 @@ class SignUpScreen extends StatelessWidget {
           ),
           Gaps.v1,
           Container(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(12),
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: Color(0xffFEE500),
