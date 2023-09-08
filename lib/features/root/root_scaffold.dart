@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hodoo_point/services/navigation_service.dart';
 import 'package:hodoo_point/services/unicons.dart';
+import 'package:hodoo_point/utils/root_navigation.dart';
 
 class RootScaffold extends StatelessWidget {
   const RootScaffold(this.navigationShell, {super.key});
@@ -36,7 +36,7 @@ class RootScaffold extends StatelessWidget {
     required String uniconsName,
     required String label,
   }) {
-    final activeColor = Theme.of(NavigationService.context).colorScheme.primary;
+    final activeColor = Theme.of(RootNavigation.context).colorScheme.primary;
     return BottomNavigationBarItem(
         icon: Unicons.svg(uniconsName,
             padding: const EdgeInsets.symmetric(vertical: 8)),

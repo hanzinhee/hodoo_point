@@ -10,12 +10,12 @@ import 'package:hodoo_point/features/lounge/lounge_screen.dart';
 import 'package:hodoo_point/features/menu/views/menu_screen.dart';
 import 'package:hodoo_point/features/notifications/notifications_screen.dart';
 import 'package:hodoo_point/features/shopping/views/shopping_screen.dart';
-import 'package:hodoo_point/services/navigation_service.dart';
+import 'package:hodoo_point/utils/root_navigation.dart';
 
 final routerProvider = Provider((ref) {
 //  ref.watch(authState);
   return GoRouter(
-    navigatorKey: NavigationService.navigatorKey,
+    navigatorKey: RootNavigation.navigatorKey,
     initialLocation: HomeScreen.routePath,
     routes: [
       StatefulShellRoute.indexedStack(
@@ -57,15 +57,15 @@ final routerProvider = Provider((ref) {
             ),
           ]),
       GoRoute(
-          parentNavigatorKey: NavigationService.navigatorKey,
+          parentNavigatorKey: RootNavigation.navigatorKey,
           path: LoginScreen.routePath,
           builder: (context, state) => const LoginScreen()),
       GoRoute(
-          parentNavigatorKey: NavigationService.navigatorKey,
+          parentNavigatorKey: RootNavigation.navigatorKey,
           path: SignUpScreen.routePath,
           builder: (context, state) => const SignUpScreen()),
       GoRoute(
-        parentNavigatorKey: NavigationService.navigatorKey,
+        parentNavigatorKey: RootNavigation.navigatorKey,
         path: NotificationScreen.routePath,
         pageBuilder: (context, state) => CustomTransitionPage<void>(
           transitionDuration: const Duration(milliseconds: 200),
@@ -85,7 +85,7 @@ final routerProvider = Provider((ref) {
         ),
       ),
       GoRoute(
-        parentNavigatorKey: NavigationService.navigatorKey,
+        parentNavigatorKey: RootNavigation.navigatorKey,
         path: MenuScreen.routePath,
         pageBuilder: (context, state) => CustomTransitionPage<void>(
           transitionDuration: const Duration(milliseconds: 200),

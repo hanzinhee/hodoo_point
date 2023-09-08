@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hodoo_point/services/navigation_service.dart';
+import 'package:hodoo_point/utils/root_navigation.dart';
 
 class HodooAppBar extends AppBar {
   HodooAppBar({
@@ -9,11 +9,11 @@ class HodooAppBar extends AppBar {
     super.actions,
     super.backgroundColor,
   }) : super(
-          leading: NavigationService.context.canPop()
+          leading: RootNavigation.context.canPop()
               ? IconButton(
                   icon: const Icon(Icons.arrow_back),
                   onPressed: () {
-                    NavigationService.context.pop();
+                    RootNavigation.context.pop();
                   },
                 )
               : null,
