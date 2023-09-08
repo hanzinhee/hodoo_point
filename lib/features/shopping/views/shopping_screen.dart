@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hodoo_point/constants/gaps.dart';
 import 'package:hodoo_point/constants/section_divider.dart';
 import 'package:hodoo_point/features/root/widgets/hodoo_app_bar.dart';
 import 'package:hodoo_point/features/shopping/views/widgets/shopping_category_tab.dart';

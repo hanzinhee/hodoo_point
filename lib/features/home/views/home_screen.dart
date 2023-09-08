@@ -6,6 +6,7 @@ import 'package:hodoo_point/features/home/views/widgets/home_member.dart';
 import 'package:hodoo_point/features/home/views/widgets/home_section_container.dart';
 import 'package:hodoo_point/features/root/widgets/hodoo_app_bar.dart';
 import 'package:hodoo_point/services/unicons.dart';
+import 'package:hodoo_point/utils/dialog.dart';
 import 'package:hodoo_point/widgets/loop_banner.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -20,7 +21,12 @@ class HomeScreen extends StatelessWidget {
           actions: [
             IconButton(
               icon: Unicons.svg('fi-rr-search'),
-              onPressed: () {},
+              onPressed: () {
+                showConfirmDialog(
+                  title: Text('Title'),
+                  content: Text('길게 길게 길게 컨텐츠를 길게 써볼까 더 길면 어떻게 되나'),
+                );
+              },
             ),
           ],
         ),

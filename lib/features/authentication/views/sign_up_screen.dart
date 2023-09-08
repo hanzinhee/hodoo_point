@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:hodoo_point/constants/gaps.dart';
 import 'package:hodoo_point/widgets/hodoo_app_bar.dart';
 
@@ -44,7 +43,7 @@ class SignUpScreen extends StatelessWidget {
             padding: const EdgeInsets.all(12),
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: Color(0xff03C75A),
+              color: const Color(0xff03C75A),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Row(mainAxisSize: MainAxisSize.min, children: [
@@ -62,7 +61,7 @@ class SignUpScreen extends StatelessWidget {
             padding: const EdgeInsets.all(12),
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: Color(0xffFEE500),
+              color: const Color(0xffFEE500),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Row(mainAxisSize: MainAxisSize.min, children: [
