@@ -304,11 +304,11 @@ class HomeMember extends ConsumerWidget {
                       Row(
                         children: [
                           Expanded(
-                            child: ElevatedButton.icon(
+                            child: FilledButton.icon(
                               onPressed: () {
                                 context.push('/login');
                               },
-                              style: ElevatedButton.styleFrom(
+                              style: FilledButton.styleFrom(
                                 textStyle: const TextStyle(fontSize: 16),
                                 padding: const EdgeInsets.symmetric(
                                     vertical: Gaps.size2),
@@ -321,7 +321,6 @@ class HomeMember extends ConsumerWidget {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(5),
                                 ),
-                                elevation: 0,
                               ),
                               label: const Text('로그인'),
                               icon: SizedBox(
@@ -334,11 +333,11 @@ class HomeMember extends ConsumerWidget {
                           ),
                           Gaps.h1,
                           Expanded(
-                            child: ElevatedButton.icon(
+                            child: FilledButton.icon(
                               onPressed: () {
                                 context.push('/sign-up');
                               },
-                              style: ElevatedButton.styleFrom(
+                              style: FilledButton.styleFrom(
                                 textStyle: const TextStyle(fontSize: 16),
                                 padding: const EdgeInsets.symmetric(
                                     vertical: Gaps.size2),
@@ -351,7 +350,6 @@ class HomeMember extends ConsumerWidget {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(5),
                                 ),
-                                elevation: 0,
                               ),
                               label: const Text('회원가입'),
                               icon: SizedBox(

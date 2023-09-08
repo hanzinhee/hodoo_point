@@ -39,10 +39,8 @@ class ShoppingScreen extends StatelessWidget {
                     for (int i = 0; i < 5; i++)
                       'https://picsum.photos/400/400/?shop=$i',
                   ],
-                  viewportFraction: 1,
                   margin: EdgeInsets.zero,
                   borderRadius: BorderRadius.zero,
-                  indicatorRight: Gaps.size1,
                 ),
               ),
               const SizedBox(

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/constants/gaps.dart';
 import 'package:hodoo_point/features/authentication/repos/authentication_repo.dart';
@@ -84,12 +83,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               ],
             ),
             Gaps.v1,
-            ElevatedButton(
+            FilledButton(
                 onPressed: () {
                   ref.read(authRepo.notifier).signIn();
                   context.pop();
                 },
-                style: ElevatedButton.styleFrom(
+                style: FilledButton.styleFrom(
                     minimumSize: const Size(double.infinity, 50)),
                 child: const Text('로그인', style: TextStyle(fontSize: 20))),
             Gaps.v3,
@@ -131,13 +130,18 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 const Text('아직 회원이 아니신가요?',
                     style: TextStyle(color: Colors.grey)),
                 TextButton(
+                    style: ButtonStyle(
+                      foregroundColor:
+                          MaterialStateProperty.all(Colors.blueAccent),
+                      overlayColor:
+                          MaterialStateProperty.all(Colors.transparent),
+                    ),
                     onPressed: () {
                       context.push('/sign-up');
                     },
-                    style: TextButton.styleFrom(
-                      padding: EdgeInsets.zero,
-                    ),
-                    child: const Text('회원가입'))
+                    child: const Text(
+                      '회원가입',
+                    ))
               ],
             )
           ],

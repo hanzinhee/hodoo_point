@@ -29,9 +29,14 @@ class HomeScreen extends StatelessWidget {
           Container(
             margin: const EdgeInsets.symmetric(vertical: Gaps.size2),
             height: 180,
-            child: LoopBanner(urls: [
-              for (int i = 0; i < 5; i++) 'https://picsum.photos/400/400/?d=$i',
-            ]),
+            child: LoopBanner(
+              urls: [
+                for (int i = 0; i < 5; i++)
+                  'https://picsum.photos/400/400/?d=$i',
+              ],
+              viewportFraction: .9,
+              margin: const EdgeInsets.symmetric(horizontal: Gaps.size1),
+            ),
           ),
           const HomeMember(),
           Dividers.section,
@@ -46,8 +51,6 @@ class HomeScreen extends StatelessWidget {
                       for (int i = 0; i < 5; i++)
                         'https://picsum.photos/400/400/?a=$i',
                     ],
-                    viewportFraction: 1.0,
-                    margin: const EdgeInsets.symmetric(horizontal: Gaps.size2),
                   ),
                 ),
                 Container(

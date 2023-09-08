@@ -5,19 +5,20 @@ import 'package:hodoo_point/constants/gaps.dart';
 import 'package:shimmer/shimmer.dart';
 
 class LoopBanner extends StatefulWidget {
-  const LoopBanner(
-      {super.key,
-      required this.urls,
-      this.viewportFraction = 0.9,
-      this.margin = const EdgeInsets.symmetric(horizontal: Gaps.size1),
-      this.borderRadius = const BorderRadius.all(Radius.circular(8)),
-      this.indicatorRight = Gaps.size1});
+  const LoopBanner({
+    super.key,
+    required this.urls,
+    this.viewportFraction = 1.0,
+    this.margin = const EdgeInsets.symmetric(horizontal: Gaps.size2),
+    this.borderRadius = const BorderRadius.all(Radius.circular(8)),
+    this.indicatorMargin = const EdgeInsets.all(Gaps.size1),
+  });
 
   final List<String> urls;
   final double viewportFraction;
   final EdgeInsets margin;
   final BorderRadiusGeometry borderRadius;
-  final double indicatorRight;
+  final EdgeInsets indicatorMargin;
 
   @override
   State<LoopBanner> createState() => _LoopBannerState();
@@ -69,85 +70,97 @@ class _LoopBannerState extends State<LoopBanner> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        PageView.builder(
-            clipBehavior: Clip.none,
-            controller: controller,
-            physics: const BouncingScrollPhysics(),
-            itemBuilder: (_, index) {
-              return Container(
-                margin: widget.margin,
-                child: ClipRRect(
-                  borderRadius: widget.borderRadius,
-                  child: CachedNetworkImage(
-                    color: [
-                      Colors.blue,
-                      Colors.deepOrange,
-                      Colors.amber,
-                      Colors.green,
-                      Colors.deepPurple,
-                    ][index % widget.urls.length]
-                        .withOpacity(0.7),
-                    colorBlendMode: BlendMode.srcATop,
-                    imageUrl: widget.urls[index % widget.urls.length],
-                    fit: BoxFit.cover,
-                    placeholder: (context, url) => Shimmer.fromColors(
-                      baseColor: Colors.grey[200]!,
-                      highlightColor: Colors.grey[50]!,
-                      child: Container(
+    return LayoutBuilder(builder: (context, constraints) {
+      final viewportFractionRightOffset = EdgeInsets.only(
+          right: constraints.maxWidth * (1 - widget.viewportFraction) / 2);
+      return Stack(
+        children: [
+          PageView.builder(
+              clipBehavior: Clip.none,
+              controller: controller,
+              physics: const BouncingScrollPhysics(),
+              itemBuilder: (_, index) {
+                return Container(
+                  margin: widget.margin,
+                  child: ClipRRect(
+                    borderRadius: widget.borderRadius,
+                    child: CachedNetworkImage(
+                      color: [
+                        Colors.blue,
+                        Colors.deepOrange,
+                        Colors.amber,
+                        Colors.green,
+                        Colors.deepPurple,
+                      ][index % widget.urls.length]
+                          .withOpacity(0.7),
+                      colorBlendMode: BlendMode.srcATop,
+                      imageUrl: widget.urls[index % widget.urls.length],
+                      fit: BoxFit.cover,
+                      placeholder: (context, url) => Shimmer.fromColors(
+                        baseColor: Colors.grey[200]!,
+                        highlightColor: Colors.grey[50]!,
+                        child: Container(
+                          color: Colors.white,
+                        ),
+                      ),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
+                    ),
+                  ),
+                );
+              }),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Container(
+              margin: widget.indicatorMargin +
+                  widget.margin +
+                  viewportFractionRightOffset,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+                    decoration: BoxDecoration(
+                        color: Colors.black26,
+                        borderRadius: BorderRadius.circular(5)),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          '${currentPage % widget.urls.length} / ${widget.urls.length}',
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 10),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 4,
+                  ),
+                  GestureDetector(
+                    onTap: () => setState(() {
+                      timer.isActive ? stopAutoScroll() : autoScroll();
+                    }),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 6, vertical: 4),
+                      decoration: BoxDecoration(
+                          color: Colors.black26,
+                          borderRadius: BorderRadius.circular(5)),
+                      child: Icon(
+                        timer.isActive ? Icons.pause : Icons.play_arrow,
                         color: Colors.white,
+                        size: 14,
                       ),
                     ),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
                   ),
-                ),
-              );
-            }),
-        Positioned(
-          bottom: 8,
-          right: widget.indicatorRight,
-          child: Row(
-            children: [
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 6, vertical: 4),
-                decoration: BoxDecoration(
-                    color: Colors.black26,
-                    borderRadius: BorderRadius.circular(5)),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      '${currentPage % widget.urls.length} / ${widget.urls.length}',
-                      style: TextStyle(color: Colors.white, fontSize: 10),
-                    ),
-                  ],
-                ),
+                ],
               ),
-              SizedBox(
-                width: 4,
-              ),
-              GestureDetector(
-                onTap: () => setState(() {
-                  timer.isActive ? stopAutoScroll() : autoScroll();
-                }),
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 6, vertical: 4),
-                  decoration: BoxDecoration(
-                      color: Colors.black26,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: Icon(
-                    timer.isActive ? Icons.pause : Icons.play_arrow,
-                    color: Colors.white,
-                    size: 14,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        )
-      ],
-    );
+            ),
+          )
+        ],
+      );
+    });
   }
 }
