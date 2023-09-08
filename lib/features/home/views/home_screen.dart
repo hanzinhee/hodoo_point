@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 showConfirmDialog(
                   title: Text('Title'),
-                  content: Text('길게 길게 길게 컨텐츠를 길게 써볼까 더 길면 어떻게 되나'),
+                  content: Text('lorem ipsum dolor sit amet consectetur '),
                 );
               },
             ),
