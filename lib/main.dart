@@ -38,7 +38,15 @@ class App extends ConsumerWidget {
                 const TextSelectionThemeData(cursorColor: Colors.blueAccent),
             elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
-                elevation: 0,
+                backgroundColor: Colors.blueAccent,
+                foregroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+            ),
+            filledButtonTheme: FilledButtonThemeData(
+              style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blueAccent,
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
