@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/constants/gaps.dart';
@@ -34,10 +33,10 @@ class _MenuScreenState extends State<MenuScreen> {
         ],
       ),
       body: ListView(
-        padding: const EdgeInsets.all(Gaps.size2),
         shrinkWrap: true,
         children: [
           Container(
+              margin: const EdgeInsets.symmetric(horizontal: Gaps.size2),
               padding: const EdgeInsets.all(Gaps.size2),
               decoration: BoxDecoration(
                 color: Colors.blueAccent,
@@ -152,8 +151,8 @@ class _MenuScreenState extends State<MenuScreen> {
               )
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: Gaps.size2),
+          Container(
+            margin: const EdgeInsets.only(left: Gaps.size2),
             child: ExpansionPanelList(
               elevation: 0,
               dividerColor: Colors.grey[300],
@@ -218,6 +217,48 @@ class _MenuScreenState extends State<MenuScreen> {
                 ),
               ],
             ),
+          ),
+          Gaps.v4,
+          // Dividers.section,
+          Container(
+            // margin: const EdgeInsets.all(Gaps.size2),
+            padding: const EdgeInsets.all(Gaps.size2),
+            decoration: BoxDecoration(
+              color: Colors.grey[100],
+              // borderRadius: BorderRadius.circular(10),
+            ),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(
+                '무엇을 도와드릴까요?',
+                style: TextStyle(color: Colors.grey[500], fontSize: 20),
+              ),
+              Gaps.v2,
+              Row(
+                children: [
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        context.push('/notice');
+                      },
+                      child: const Text(
+                        '공지사항',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {},
+                      child: const Text(
+                        '문의 1555-5555',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            ]),
           )
         ],
       ),

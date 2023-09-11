@@ -36,6 +36,7 @@ class App extends ConsumerWidget {
           useMaterial3: true,
           textSelectionTheme:
               const TextSelectionThemeData(cursorColor: Colors.blueAccent),
+          appBarTheme: const AppBarTheme(surfaceTintColor: Colors.transparent),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.blueAccent,
