@@ -21,61 +21,84 @@ class SignUpScreen extends StatelessWidget {
           Gaps.v2,
           const Text('호두 포인트의 해택을 누리세요.'),
           Gaps.v6,
-          Container(
-            padding: const EdgeInsets.all(12),
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: Colors.black,
-              borderRadius: BorderRadius.circular(8),
+          buildButton(
+            onPressed: () {},
+            label: const Text('휴대폰 인증',
+                style: TextStyle(color: Colors.blueAccent)),
+            icon: Image.asset(
+              'assets/images/icons/flaticon/authentication.png',
+              width: 18,
             ),
-            child: Row(mainAxisSize: MainAxisSize.min, children: [
-              Image.asset('assets/images/icons/company/apple_logo_white.png'),
-              Gaps.h1,
-              const Text('Apple로 등록',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500))
-            ]),
+            borderSide: const BorderSide(color: Colors.blueAccent),
+            overlayColor: Colors.blueAccent.withOpacity(0.1),
+            backgroundColor: Colors.white,
           ),
           Gaps.v1,
-          Container(
-            padding: const EdgeInsets.all(12),
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: const Color(0xff03C75A),
-              borderRadius: BorderRadius.circular(8),
+          buildButton(
+            onPressed: () {},
+            label: const Text('Apple로 등록'),
+            icon: Image.asset(
+              'assets/images/icons/company/apple_logo_white.png',
+              width: 18,
             ),
-            child: Row(mainAxisSize: MainAxisSize.min, children: [
-              Image.asset('assets/images/icons/company/naver_logo_white.png'),
-              Gaps.h1,
-              const Text('NAVER로 등록',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500))
-            ]),
+            backgroundColor: Colors.black,
           ),
           Gaps.v1,
-          Container(
-            padding: const EdgeInsets.all(12),
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: const Color(0xffFEE500),
-              borderRadius: BorderRadius.circular(8),
+          buildButton(
+            onPressed: () {},
+            label: const Text('NAVER로 등록'),
+            icon: Image.asset(
+              'assets/images/icons/company/naver_logo_white.png',
+              width: 18,
             ),
-            child: Row(mainAxisSize: MainAxisSize.min, children: [
-              Image.asset('assets/images/icons/company/kakao_logo_black.png'),
-              Gaps.h1,
-              const Text('Kakao로 등록',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500))
-            ]),
-          )
+            backgroundColor: const Color(0xff03C75A),
+          ),
+          Gaps.v1,
+          buildButton(
+            onPressed: () {},
+            label: const Text(
+              'Kakao로 등록',
+              style: TextStyle(color: Colors.black),
+            ),
+            icon: Image.asset(
+              'assets/images/icons/company/kakao_logo_black.png',
+              width: 18,
+            ),
+            backgroundColor: const Color(0xffFEE500),
+          ),
         ],
       ),
     );
+  }
+
+  FilledButton buildButton(
+      {VoidCallback? onPressed,
+      required Widget label,
+      Widget? icon,
+      Color? backgroundColor,
+      Color? overlayColor,
+      BorderSide? borderSide}) {
+    return FilledButton(
+        onPressed: onPressed,
+        style: ButtonStyle(
+          padding: MaterialStateProperty.resolveWith(
+              (states) => const EdgeInsets.all(12)),
+          side: borderSide != null
+              ? MaterialStateProperty.resolveWith((states) => borderSide)
+              : null,
+          backgroundColor: backgroundColor != null
+              ? MaterialStateColor.resolveWith((states) => backgroundColor)
+              : null,
+          overlayColor: overlayColor != null
+              ? MaterialStateColor.resolveWith((states) => overlayColor)
+              : null,
+        ),
+        child: Row(mainAxisSize: MainAxisSize.min, children: [
+          if (icon != null) icon,
+          Gaps.h1,
+          DefaultTextStyle.merge(
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              child: label)
+        ]));
   }
 }
