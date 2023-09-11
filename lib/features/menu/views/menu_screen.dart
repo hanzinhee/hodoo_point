@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/constants/gaps.dart';
 import 'package:hodoo_point/services/unicons.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
@@ -249,7 +250,13 @@ class _MenuScreenState extends State<MenuScreen> {
                   ),
                   Expanded(
                     child: GestureDetector(
-                      onTap: () {},
+                      onTap: () async {
+                        final Uri launchUri = Uri(
+                          scheme: 'tel',
+                          path: '1555-5555',
+                        );
+                        await launchUrl(launchUri);
+                      },
                       child: const Text(
                         '문의 1555-5555',
                         style: TextStyle(fontSize: 18),
