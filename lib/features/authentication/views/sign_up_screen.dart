@@ -71,34 +71,36 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 
-  FilledButton buildButton(
+  Widget buildButton(
       {VoidCallback? onPressed,
       required Widget label,
       Widget? icon,
       Color? backgroundColor,
       Color? overlayColor,
       BorderSide? borderSide}) {
-    return FilledButton(
-        onPressed: onPressed,
-        style: ButtonStyle(
-          padding: MaterialStateProperty.resolveWith(
-              (states) => const EdgeInsets.all(12)),
-          side: borderSide != null
-              ? MaterialStateProperty.resolveWith((states) => borderSide)
-              : null,
-          backgroundColor: backgroundColor != null
-              ? MaterialStateColor.resolveWith((states) => backgroundColor)
-              : null,
-          overlayColor: overlayColor != null
-              ? MaterialStateColor.resolveWith((states) => overlayColor)
-              : null,
-        ),
-        child: Row(mainAxisSize: MainAxisSize.min, children: [
-          if (icon != null) icon,
-          Gaps.h1,
-          DefaultTextStyle.merge(
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-              child: label)
-        ]));
+    return SizedBox(
+      height: 45,
+      child: FilledButton(
+          onPressed: onPressed,
+          style: ButtonStyle(
+            side: borderSide != null
+                ? MaterialStateProperty.resolveWith((states) => borderSide)
+                : null,
+            backgroundColor: backgroundColor != null
+                ? MaterialStateColor.resolveWith((states) => backgroundColor)
+                : null,
+            overlayColor: overlayColor != null
+                ? MaterialStateColor.resolveWith((states) => overlayColor)
+                : null,
+          ),
+          child: Row(mainAxisSize: MainAxisSize.min, children: [
+            if (icon != null) icon,
+            Gaps.h1,
+            DefaultTextStyle.merge(
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                child: label)
+          ])),
+    );
   }
 }
