@@ -15,7 +15,7 @@ class NotificationScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
-            icon: Unicons.svg('fi-sr-cross'),
+            icon: Unicons.svg('fi-rr-cross-small'),
             onPressed: () {
               context.pop();
             },

@@ -1,6 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/constants/gaps.dart';
+import 'package:hodoo_point/services/unicons.dart';
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
@@ -22,13 +24,13 @@ class _MenuScreenState extends State<MenuScreen> {
             onPressed: () {
               context.go('/home');
             },
-            icon: const Icon(Icons.home_outlined)),
+            icon: Unicons.svg('fi-rr-home')),
         actions: [
           IconButton(
               onPressed: () {
                 context.pop();
               },
-              icon: const Icon(Icons.close)),
+              icon: Unicons.svg('fi-rr-cross-small')),
         ],
       ),
       body: ListView(
@@ -150,69 +152,72 @@ class _MenuScreenState extends State<MenuScreen> {
               )
             ],
           ),
-          ExpansionPanelList(
-            elevation: 0,
-            dividerColor: Colors.grey[300],
-            expandIconColor: Colors.blueAccent,
-            expansionCallback: (int index, bool isExpanded) {
-              setState(() {
-                isExpandedList[index] = isExpanded;
-              });
-            },
-            children: [
-              ExpansionPanel(
-                // canTapOnHeader: true,
-                headerBuilder: (BuildContext context, bool isExpanded) {
-                  return buildMenuHeader('포인트 • 결제');
-                },
-                body: Column(
-                  children: [
-                    Row(
-                      children: [
-                        buildMenuText('포인트 충전'),
-                        Gaps.h5,
-                        buildMenuText('포인트 전환'),
-                      ],
-                    ),
-                    Gaps.v2,
-                    Row(
-                      children: [
-                        buildMenuText('포인트 송금'),
-                        Gaps.h5,
-                        buildMenuText('포인트 환불'),
-                      ],
-                    ),
-                  ],
+          Padding(
+            padding: const EdgeInsets.only(left: Gaps.size2),
+            child: ExpansionPanelList(
+              elevation: 0,
+              dividerColor: Colors.grey[300],
+              expandIconColor: Colors.blueAccent,
+              expansionCallback: (int index, bool isExpanded) {
+                setState(() {
+                  isExpandedList[index] = isExpanded;
+                });
+              },
+              children: [
+                ExpansionPanel(
+                  // canTapOnHeader: true,
+                  headerBuilder: (BuildContext context, bool isExpanded) {
+                    return buildMenuHeader('포인트 • 결제');
+                  },
+                  body: Column(
+                    children: [
+                      Row(
+                        children: [
+                          buildMenuText('포인트 충전'),
+                          Gaps.h5,
+                          buildMenuText('포인트 전환'),
+                        ],
+                      ),
+                      Gaps.v2,
+                      Row(
+                        children: [
+                          buildMenuText('포인트 송금'),
+                          Gaps.h5,
+                          buildMenuText('포인트 환불'),
+                        ],
+                      ),
+                    ],
+                  ),
+                  isExpanded: isExpandedList[0],
                 ),
-                isExpanded: isExpandedList[0],
-              ),
-              ExpansionPanel(
-                // canTapOnHeader: true,
-                headerBuilder: (BuildContext context, bool isExpanded) {
-                  return buildMenuHeader('포인트 • 결제');
-                },
-                body: Column(
-                  children: [
-                    Row(
-                      children: [
-                        buildMenuText('포인트 충전'),
-                        Gaps.h5,
-                        buildMenuText('포인트 전환'),
-                      ],
-                    ),
-                    Gaps.v2,
-                    Row(
-                      children: [
-                        buildMenuText('포인트 송금'),
-                        Gaps.h5,
-                        buildMenuText('포인트 환불'),
-                      ],
-                    ),
-                  ],
+                ExpansionPanel(
+                  // canTapOnHeader: true,
+                  headerBuilder: (BuildContext context, bool isExpanded) {
+                    return buildMenuHeader('포인트 • 결제');
+                  },
+                  body: Column(
+                    children: [
+                      Row(
+                        children: [
+                          buildMenuText('포인트 충전'),
+                          Gaps.h5,
+                          buildMenuText('포인트 전환'),
+                        ],
+                      ),
+                      Gaps.v2,
+                      Row(
+                        children: [
+                          buildMenuText('포인트 송금'),
+                          Gaps.h5,
+                          buildMenuText('포인트 환불'),
+                        ],
+                      ),
+                    ],
+                  ),
+                  isExpanded: isExpandedList[1],
                 ),
-                isExpanded: isExpandedList[1],
-              ),
-            ],
+              ],
+            ),
           )
         ],
       ),
@@ -224,7 +229,7 @@ class _MenuScreenState extends State<MenuScreen> {
       alignment: Alignment.centerLeft,
       child: Text(
         data,
-        style: TextStyle(
+        style: const TextStyle(
             fontSize: 24,
             color: Colors.blueAccent,
             fontWeight: FontWeight.w600),
