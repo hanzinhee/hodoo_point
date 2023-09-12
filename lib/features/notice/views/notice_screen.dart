@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/constants/gaps.dart';
+import 'package:hodoo_point/features/notice/views/widgets/notice_app_bar.dart';
 import 'package:hodoo_point/widgets/three_rotating_dot_indicator.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:intl/intl.dart';
 
 class NoticeModel {
-  NoticeModel({required this.title, required this.date});
+  NoticeModel(this.noticeId, {required this.title, required this.date});
+  final int noticeId;
   final String title;
   final DateTime date;
 }
@@ -39,7 +42,7 @@ class _NoticeScreenState extends State<NoticeScreen> {
       // final newItems = <NoticeModel>[];
       final newItems = List.generate(
           (pageKey > 50) ? 1 : 10,
-          (index) => NoticeModel(
+          (index) => NoticeModel(index,
               title: '공지사항 입니다. ${index + pageKey}', date: DateTime.now()));
       final isLastPage = newItems.length < _pageSize;
       if (isLastPage) {
@@ -58,19 +61,16 @@ class _NoticeScreenState extends State<NoticeScreen> {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          SliverAppBar(
-            pinned: true,
-            backgroundColor: Colors.blueGrey[50],
-            title: const Text('공지사항'),
-            centerTitle: true,
-          ),
+          NoticeAppBar(),
           PagedSliverList<int, NoticeModel>(
             pagingController: _pagingController,
             builderDelegate: PagedChildBuilderDelegate<NoticeModel>(
               itemBuilder: (context, item, index) => Column(
                 children: [
                   ListTile(
-                    onTap: () {},
+                    onTap: () {
+                      context.push('/notice/${item.noticeId}');
+                    },
                     title: Text(item.title),
                     subtitle: Text(DateFormat('yyyy-MM-dd').format(item.date)),
                   ),

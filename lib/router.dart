@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/features/authentication/views/sign_up_screen.dart';
 import 'package:hodoo_point/features/home/views/home_screen.dart';
+import 'package:hodoo_point/features/notice/views/notice_detail_screen.dart';
 import 'package:hodoo_point/features/notice/views/notice_screen.dart';
 import 'package:hodoo_point/features/payment/views/payment_screen.dart';
 import 'package:hodoo_point/features/root/root_scaffold.dart';
@@ -69,6 +70,11 @@ final routerProvider = Provider((ref) {
           parentNavigatorKey: RootNavigation.navigatorKey,
           path: NoticeScreen.routePath,
           builder: (context, state) => const NoticeScreen()),
+      GoRoute(
+          parentNavigatorKey: RootNavigation.navigatorKey,
+          path: NoticeDetailScreen.routePath,
+          builder: (context, state) => NoticeDetailScreen(
+              noticeId: int.tryParse(state.pathParameters['noticeId'] ?? ''))),
       GoRoute(
         parentNavigatorKey: RootNavigation.navigatorKey,
         path: NotificationScreen.routePath,
