@@ -4,7 +4,7 @@ import 'package:hodoo_point/constants/gaps.dart';
 import 'package:hodoo_point/constants/section_divider.dart';
 import 'package:hodoo_point/features/home/views/widgets/home_member.dart';
 import 'package:hodoo_point/features/home/views/widgets/home_section_container.dart';
-import 'package:hodoo_point/features/root/widgets/hodoo_app_bar.dart';
+import 'package:hodoo_point/features/root/widgets/root_app_bar.dart';
 import 'package:hodoo_point/services/unicons.dart';
 import 'package:hodoo_point/utils/dialog.dart';
 import 'package:hodoo_point/widgets/loop_banner.dart';
@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        HoDooAppBar(
+        RootAppBar(
           actions: [
             IconButton(
               icon: Unicons.svg('fi-rr-search'),

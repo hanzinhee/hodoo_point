@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hodoo_point/constants/section_divider.dart';
-import 'package:hodoo_point/features/root/widgets/hodoo_app_bar.dart';
+import 'package:hodoo_point/features/root/widgets/root_app_bar.dart';
 import 'package:hodoo_point/features/shopping/views/widgets/shopping_category_tab.dart';
 import 'package:hodoo_point/features/shopping/views/widgets/shopping_group_tab_bar.dart';
 import 'package:hodoo_point/features/shopping/views/widgets/shopping_two_column_item_list.dart';
@@ -16,7 +16,7 @@ class ShoppingScreen extends StatelessWidget {
     return SafeArea(
       child: CustomScrollView(
         slivers: [
-          HoDooAppBar(
+          RootAppBar(
             scrolledUnderElevation: 0,
             actions: [
               IconButton(

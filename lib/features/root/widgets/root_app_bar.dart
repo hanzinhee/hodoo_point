@@ -4,8 +4,8 @@ import 'package:hodoo_point/features/menu/views/menu_screen.dart';
 import 'package:hodoo_point/features/notifications/notifications_screen.dart';
 import 'package:hodoo_point/services/unicons.dart';
 
-class HoDooAppBar extends StatelessWidget {
-  const HoDooAppBar(
+class RootAppBar extends StatelessWidget {
+  const RootAppBar(
       {super.key,
       this.actions,
       this.backgroundColor,
