@@ -11,6 +11,8 @@ import 'package:hodoo_point/features/authentication/views/login_screen.dart';
 import 'package:hodoo_point/features/lounge/lounge_screen.dart';
 import 'package:hodoo_point/features/menu/views/menu_screen.dart';
 import 'package:hodoo_point/features/notifications/notifications_screen.dart';
+import 'package:hodoo_point/features/shopping/views/shopping_invalid_product_screen.dart';
+import 'package:hodoo_point/features/shopping/views/shopping_product_screen.dart';
 import 'package:hodoo_point/features/shopping/views/shopping_screen.dart';
 import 'package:hodoo_point/utils/root_navigation.dart';
 
@@ -75,6 +77,17 @@ final routerProvider = Provider((ref) {
           path: NoticeDetailScreen.routePath,
           builder: (context, state) => NoticeDetailScreen(
               noticeId: int.tryParse(state.pathParameters['noticeId'] ?? ''))),
+      GoRoute(
+          parentNavigatorKey: RootNavigation.navigatorKey,
+          path: ShoppingProductScreen.routePath,
+          builder: (context, state) {
+            final int? productId =
+                int.tryParse(state.pathParameters['productId'] ?? '');
+
+            if (productId == null) return const ShoppingInvalidProductScreen();
+
+            return ShoppingProductScreen(productId: productId);
+          }),
       GoRoute(
         parentNavigatorKey: RootNavigation.navigatorKey,
         path: NotificationScreen.routePath,

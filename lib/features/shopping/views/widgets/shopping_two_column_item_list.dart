@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/constants/gaps.dart';
 
 class ShoppingTwoColumnItemList extends StatelessWidget {
@@ -24,41 +25,47 @@ class ShoppingTwoColumnItemList extends StatelessWidget {
                         padding: EdgeInsets.only(
                             right: j == 0 ? Gaps.size1 : 0,
                             left: j == 1 ? Gaps.size1 : 0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: CachedNetworkImage(
-                                  imageUrl:
-                                      'https://picsum.photos/500/500/?vv=${i + j}'),
-                            ),
-                            const Text('원데이 홍삼 골드 50ml * 30포',
-                                style: TextStyle()),
-                            const Text('25,800원',
-                                style: TextStyle(
-                                    letterSpacing: 0.3,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 16,
-                                    color: Colors.blue)),
-                            Row(
-                              children: [
-                                const Text(
-                                  '90%',
+                        child: GestureDetector(
+                          onTap: () {
+                            context.push('/shopping/product/$i');
+                          },
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(8),
+                                child: CachedNetworkImage(
+                                    imageUrl:
+                                        'https://picsum.photos/500/500/?vv=${i + j}'),
+                              ),
+                              const Text('원데이 홍삼 골드 50ml * 30포',
+                                  style: TextStyle()),
+                              const Text('25,800원',
                                   style: TextStyle(
-                                    color: Colors.red,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                                Gaps.h1,
-                                Text('596,000',
+                                      letterSpacing: 0.3,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 16,
+                                      color: Colors.blue)),
+                              Row(
+                                children: [
+                                  const Text(
+                                    '90%',
                                     style: TextStyle(
-                                        fontSize: 12,
-                                        decoration: TextDecoration.lineThrough,
-                                        color: Colors.grey[700]))
-                              ],
-                            )
-                          ],
+                                      color: Colors.red,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  Gaps.h1,
+                                  Text('596,000',
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          decoration:
+                                              TextDecoration.lineThrough,
+                                          color: Colors.grey[700]))
+                                ],
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
