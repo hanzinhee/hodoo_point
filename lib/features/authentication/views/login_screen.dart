@@ -23,7 +23,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       body: Padding(
         padding: const EdgeInsets.all(Gaps.size2),
         child: ListView(
-          shrinkWrap: true,
+          controller: ScrollController(),
           children: [
             const Text(
               'HODOO POINT',

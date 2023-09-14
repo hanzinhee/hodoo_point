@@ -151,7 +151,34 @@ class _ShoppingProductScreenState extends State<ShoppingProductScreen> {
                       IconButton(onPressed: () {}, icon: Icon(Icons.favorite)),
                       Expanded(
                           child: FilledButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                showModalBottomSheet(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return Container(
+                                        color: Colors.white,
+                                        child: ListView(
+                                          shrinkWrap: true,
+                                          controller: ScrollController(),
+                                          children: [
+                                            Container(
+                                              padding: const EdgeInsets.all(
+                                                  Gaps.size2),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Text('옵션선택'),
+                                                  Icon(Icons.expand_more)
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    });
+                              },
                               style: FilledButton.styleFrom(
                                 minimumSize: Size(0, 50),
                               ),
