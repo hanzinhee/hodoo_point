@@ -12,19 +12,19 @@ class HomeMember extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final authState = ref.watch(authRepo);
+    final members = ref.watch(authRepo);
     return Stack(
       clipBehavior: Clip.none,
       children: [
         Container(
             margin: const EdgeInsets.symmetric(
                 horizontal: Gaps.size2, vertical: Gaps.size2),
-            child: authState
+            child: members != null
                 ? Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '한진희님\n다양한 혜택을 즐겨보세요!',
+                        '${members.name}(${members.loginKind.name})님\n다양한 혜택을 즐겨보세요!',
                         style: TextStyle(
                             fontSize: 20, height: 1.2, color: Colors.blue[800]),
                       ),
@@ -368,7 +368,7 @@ class HomeMember extends ConsumerWidget {
         Positioned(
           right: 0,
           child: Switch(
-              value: authState,
+              value: members != null,
               onChanged: (value) {
                 if (value) {
                   ref.read(authRepo.notifier).signIn();

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_naver_login/flutter_naver_login.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/constants/gaps.dart';
@@ -119,12 +118,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 )),
                 GestureDetector(
                   onTap: () async {
-                    NaverLoginResult _result = await FlutterNaverLogin.logIn();
-                    NaverAccessToken res =
-                        await FlutterNaverLogin.currentAccessToken;
-                    var _id = _result.account.id;
-                    var _email = _result.account.email;
-                    FlutterNaverLogin.logOut();
+                    await ref.read(authRepo.notifier).signInWithNaver(
+                      onComplete: (loggedIn) {
+                        if (loggedIn) context.pop();
+                      },
+                    );
                   },
                   child: ClipOval(
                       child: Image.asset(
