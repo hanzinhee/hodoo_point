@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/constants/gaps.dart';
-import 'package:hodoo_point/features/authentication/repos/authentication_repo.dart';
+import 'package:hodoo_point/features/authentication/models/member.dart';
+import 'package:hodoo_point/features/authentication/states/auth_notifier.dart';
 import 'package:hodoo_point/widgets/hodoo_app_bar.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
@@ -85,7 +86,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             Gaps.v1,
             FilledButton(
                 onPressed: () {
-                  ref.read(authRepo.notifier).signIn();
+                  ref.read(authProvider.notifier).signIn(LoginKind.mobile);
                   context.pop();
                 },
                 style: FilledButton.styleFrom(
@@ -118,11 +119,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 )),
                 GestureDetector(
                   onTap: () async {
-                    await ref.read(authRepo.notifier).signInWithNaver(
-                      onComplete: (loggedIn) {
-                        if (loggedIn) context.pop();
-                      },
-                    );
+                    await ref
+                        .read(authProvider.notifier)
+                        .signIn(LoginKind.naver);
                   },
                   child: ClipOval(
                       child: Image.asset(

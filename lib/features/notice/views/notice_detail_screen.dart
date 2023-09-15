@@ -1,7 +1,4 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:hodoo_point/features/notice/views/widgets/notice_app_bar.dart';
 import 'package:hodoo_point/widgets/hodoo_app_bar.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 

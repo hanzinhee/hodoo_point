@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/constants/gaps.dart';
-import 'package:hodoo_point/features/authentication/repos/authentication_repo.dart';
+import 'package:hodoo_point/features/authentication/models/member.dart';
+import 'package:hodoo_point/features/authentication/states/auth_notifier.dart';
 import 'package:hodoo_point/services/unicons.dart';
 
 class HomeMember extends ConsumerWidget {
@@ -12,19 +13,19 @@ class HomeMember extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final members = ref.watch(authRepo);
+    final members = ref.watch(authProvider);
     return Stack(
       clipBehavior: Clip.none,
       children: [
         Container(
             margin: const EdgeInsets.symmetric(
                 horizontal: Gaps.size2, vertical: Gaps.size2),
-            child: members != null
+            child: ref.watch(isLoggedIn)
                 ? Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '${members.name}(${members.loginKind.name})님\n다양한 혜택을 즐겨보세요!',
+                        '${members.value!.name}(${members.value!.loginKind.name})님\n다양한 혜택을 즐겨보세요!',
                         style: TextStyle(
                             fontSize: 20, height: 1.2, color: Colors.blue[800]),
                       ),
@@ -368,12 +369,12 @@ class HomeMember extends ConsumerWidget {
         Positioned(
           right: 0,
           child: Switch(
-              value: members != null,
+              value: ref.watch(isLoggedIn),
               onChanged: (value) {
                 if (value) {
-                  ref.read(authRepo.notifier).signIn();
+                  ref.read(authProvider.notifier).signIn(LoginKind.mobile);
                 } else {
-                  ref.read(authRepo.notifier).signOut();
+                  ref.read(authProvider.notifier).signOut();
                 }
               }),
         ),
