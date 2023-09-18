@@ -17,6 +17,14 @@ class LoginScreen extends ConsumerStatefulWidget {
 class _LoginScreenState extends ConsumerState<LoginScreen> {
   bool checkedKeepLogin = false;
 
+  Future<void> signIn(LoginKind loginKind) async {
+    ref.read(authProvider.notifier).signIn(loginKind).then((_) {
+      if (ref.read(isLoggedIn)) context.pop();
+    }).onError((error, stackTrace) {
+      print(error);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,8 +94,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             Gaps.v1,
             FilledButton(
                 onPressed: () {
-                  ref.read(authProvider.notifier).signIn(LoginKind.mobile);
-                  context.pop();
+                  signIn(LoginKind.mobile);
                 },
                 style: FilledButton.styleFrom(
                     minimumSize: const Size(double.infinity, 50)),
@@ -112,16 +119,19 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   'assets/images/icons/company/apple.png',
                   width: 44,
                 )),
-                ClipOval(
-                    child: Image.asset(
-                  'assets/images/icons/company/kakao.png',
-                  width: 44,
-                )),
+                GestureDetector(
+                  onTap: () {
+                    signIn(LoginKind.kakao);
+                  },
+                  child: ClipOval(
+                      child: Image.asset(
+                    'assets/images/icons/company/kakao.png',
+                    width: 44,
+                  )),
+                ),
                 GestureDetector(
                   onTap: () async {
-                    await ref
-                        .read(authProvider.notifier)
-                        .signIn(LoginKind.naver);
+                    signIn(LoginKind.naver);
                   },
                   child: ClipOval(
                       child: Image.asset(

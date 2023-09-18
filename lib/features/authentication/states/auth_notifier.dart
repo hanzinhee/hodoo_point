@@ -3,37 +3,31 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hodoo_point/features/authentication/models/member.dart';
 import 'package:hodoo_point/features/authentication/repos/auth_repository.dart';
 
-class AuthNotifier extends AsyncNotifier<Members?> {
+class AuthNotifier extends Notifier<Members?> {
   late final AuthRepository _repository;
 
   @override
-  FutureOr<Members?> build() async {
+  Members? build() {
     _repository = ref.read(authRepo);
-    return Future.value(null);
+    return null;
   }
 
   Future<void> signOut() async {
-    if (state.value == null) return;
-    state = const AsyncValue.loading();
-    state = await AsyncValue.guard(() async {
-      await _repository.signOut(state.value!.loginKind);
-      return null;
-    });
+    if (state == null) return;
+    await _repository.signOut(state!.loginKind);
+    state = null;
   }
 
   Future<void> signIn(LoginKind loginKind) async {
-    state = const AsyncValue.loading();
-    state = await AsyncValue.guard(() async {
-      return switch (loginKind) {
-        LoginKind.mobile => _repository.signInWithMobile(),
-        LoginKind.naver => await _repository.signInWithNaver(),
-        _ => null,
-      };
-    });
+    state = switch (loginKind) {
+      LoginKind.mobile => _repository.signInWithMobile(),
+      LoginKind.naver => await _repository.signInWithNaver(),
+      LoginKind.kakao => await _repository.signInWithKakao(),
+      _ => null,
+    };
   }
 }
 
 final authProvider =
-    AsyncNotifierProvider<AuthNotifier, Members?>(() => AuthNotifier());
-final isLoggedIn =
-    Provider<bool>((ref) => ref.watch(authProvider).value != null);
+    NotifierProvider<AuthNotifier, Members?>(() => AuthNotifier());
+final isLoggedIn = Provider<bool>((ref) => ref.watch(authProvider) != null);

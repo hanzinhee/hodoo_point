@@ -1,4 +1,7 @@
 import 'package:flutter_naver_login/flutter_naver_login.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hodoo_point/features/authentication/repos/auth_repository.dart';
+import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 
 //  1 휴대폰로그인
 //  2 생체인증로그인
@@ -43,6 +46,7 @@ class Members {
   final String? kakaoLoginKey;
   final String? appleLoginKey;
   final LoginKind loginKind;
+  final bool isSignedUp = false;
 
   Members(
       {
@@ -62,6 +66,16 @@ class Members {
       mobile: account.mobile,
       naverLoginKey: account.id,
       loginKind: LoginKind.naver,
+    );
+  }
+
+  factory Members.kakao(User account) {
+    return Members(
+      name: account.kakaoAccount?.name ?? '',
+      email: account.kakaoAccount?.email ?? '',
+      mobile: account.kakaoAccount?.phoneNumber ?? '',
+      kakaoLoginKey: account.id.toString(),
+      loginKind: LoginKind.kakao,
     );
   }
 }
