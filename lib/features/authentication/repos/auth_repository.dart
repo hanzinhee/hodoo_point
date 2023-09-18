@@ -43,7 +43,7 @@ class AuthRepository {
   }
 
   Future<dynamic> getMemberInfo(String id) async {
-    final res = await _dio.post('/member/info', data: {'id': id});
+    await _dio.post('/member/info', data: {'id': id});
     return null;
   }
 }
