@@ -23,8 +23,9 @@ class HomeScreen extends StatelessWidget {
               icon: Unicons.svg('fi-rr-search'),
               onPressed: () {
                 showConfirmDialog(
-                  title: Text('Title'),
-                  content: Text('lorem ipsum dolor sit amet consectetur '),
+                  title: const Text('Title'),
+                  content:
+                      const Text('lorem ipsum dolor sit amet consectetur '),
                 );
               },
             ),

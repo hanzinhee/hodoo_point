@@ -1,6 +1,4 @@
 import 'package:flutter_naver_login/flutter_naver_login.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hodoo_point/features/authentication/repos/auth_repository.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 
 //  1 휴대폰로그인

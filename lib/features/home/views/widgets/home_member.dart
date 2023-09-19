@@ -25,7 +25,7 @@ class HomeMember extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '${members!.name}(${members!.loginKind.name})님\n다양한 혜택을 즐겨보세요!',
+                        '${members!.name}(${members.loginKind.name})님\n다양한 혜택을 즐겨보세요!',
                         style: TextStyle(
                             fontSize: 20, height: 1.2, color: Colors.blue[800]),
                       ),
