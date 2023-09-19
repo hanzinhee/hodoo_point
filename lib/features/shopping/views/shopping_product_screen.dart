@@ -19,6 +19,7 @@ class ShoppingProductScreen extends StatefulWidget {
 
 class _ShoppingProductScreenState extends State<ShoppingProductScreen> {
   final pageController = PageController();
+  bool isLiked = false;
 
   @override
   void initState() {
@@ -143,9 +144,14 @@ class _ShoppingProductScreenState extends State<ShoppingProductScreen> {
                     top: false,
                     child: Row(
                       children: [
-                        const ShoppingProductLikeButton(
-                            // isLiked: true,
-                            ),
+                        ShoppingProductLikeButton(
+                          onTap: () {
+                            setState(() {
+                              isLiked = !isLiked;
+                            });
+                          },
+                          isLiked: isLiked,
+                        ),
                         Gaps.h2,
                         Expanded(
                             child: FilledButton(
