@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/constants/gaps.dart';
-import 'package:hodoo_point/services/unicons.dart';
+import 'package:hodoo_point/utils/unicons.dart';
 import 'package:lottie/lottie.dart';
 
 class PointCardSheet extends StatefulWidget {

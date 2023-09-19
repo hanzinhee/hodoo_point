@@ -5,7 +5,7 @@ import 'package:hodoo_point/constants/section_divider.dart';
 import 'package:hodoo_point/features/home/views/widgets/home_member.dart';
 import 'package:hodoo_point/features/home/views/widgets/home_section_container.dart';
 import 'package:hodoo_point/features/root/widgets/root_app_bar.dart';
-import 'package:hodoo_point/services/unicons.dart';
+import 'package:hodoo_point/utils/unicons.dart';
 import 'package:hodoo_point/utils/dialog.dart';
 import 'package:hodoo_point/widgets/loop_banner.dart';
 

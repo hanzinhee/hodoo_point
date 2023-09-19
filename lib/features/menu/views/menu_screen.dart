@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/constants/gaps.dart';
-import 'package:hodoo_point/services/unicons.dart';
+import 'package:hodoo_point/utils/unicons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MenuScreen extends StatefulWidget {
@@ -27,10 +27,11 @@ class _MenuScreenState extends State<MenuScreen> {
             icon: Unicons.svg('fi-rr-home')),
         actions: [
           IconButton(
-              onPressed: () {
-                context.pop();
-              },
-              icon: Unicons.svg('fi-rr-cross-small')),
+            onPressed: () {
+              context.pop();
+            },
+            icon: const Icon(Icons.close),
+          ),
         ],
       ),
       body: ListView(
@@ -65,7 +66,7 @@ class _MenuScreenState extends State<MenuScreen> {
                   ),
                   Spacer(),
                   Icon(
-                    Icons.arrow_forward_ios,
+                    Icons.arrow_forward,
                     color: Colors.white,
                   )
                 ],

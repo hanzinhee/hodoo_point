@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hodoo_point/constants/gaps.dart';
 import 'package:hodoo_point/features/payment/views/widgets/point_card_sheet.dart';
-import 'package:hodoo_point/services/unicons.dart';
+import 'package:hodoo_point/utils/unicons.dart';
 
 class PaymentSlideView extends StatefulWidget {
   const PaymentSlideView({super.key});
@@ -267,7 +267,7 @@ class _PaymentSlideViewState extends State<PaymentSlideView> {
                 children: [
                   SizedBox(
                     width: 16,
-                    child: Unicons.svg('fi-rr-chart-pie-alt',
+                    child: Unicons.svg('fi-rs-chart-pie-alt',
                         color: Theme.of(context).primaryColor),
                   ),
                   Gaps.h1,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hodoo_point/services/unicons.dart';
+import 'package:hodoo_point/utils/unicons.dart';
 import 'package:hodoo_point/utils/root_navigation.dart';
 
 class RootScaffold extends StatelessWidget {
@@ -22,10 +22,10 @@ class RootScaffold extends StatelessWidget {
         selectedLabelStyle: TextStyle(fontSize: 12),
         type: BottomNavigationBarType.fixed,
         items: [
-          _buildBarItem(uniconsName: 'fi-sr-star', label: '해택'),
+          _buildBarItem(uniconsName: 'fi-sr-gift', label: '해택'),
           _buildBarItem(uniconsName: 'fi-sr-shopping-bag', label: '쇼핑'),
           _buildBarItem(uniconsName: 'fi-sr-credit-card', label: '결제'),
-          _buildBarItem(uniconsName: 'fi-sr-coffee', label: '라운지'),
+          _buildBarItem(uniconsName: 'fi-sr-settings', label: '설정'),
         ],
         onTap: _onTap,
       ),

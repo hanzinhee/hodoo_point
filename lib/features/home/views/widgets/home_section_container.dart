@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hodoo_point/constants/gaps.dart';
 import 'package:hodoo_point/constants/section_divider.dart';
-import 'package:hodoo_point/services/unicons.dart';
+import 'package:hodoo_point/utils/unicons.dart';
 
 class HomeSectionContainer extends StatelessWidget {
   const HomeSectionContainer(

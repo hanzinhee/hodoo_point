@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/features/menu/views/menu_screen.dart';
 import 'package:hodoo_point/features/notifications/notifications_screen.dart';
-import 'package:hodoo_point/services/unicons.dart';
+import 'package:hodoo_point/utils/unicons.dart';
 
 class RootAppBar extends StatelessWidget {
   const RootAppBar(
@@ -24,7 +24,7 @@ class RootAppBar extends StatelessWidget {
       floating: true,
       snap: true,
       leading: IconButton(
-        icon: Unicons.svg('fi-rr-bell'),
+        icon: Unicons.svg('fi-rs-bell'),
         onPressed: () {
           context.push(NotificationScreen.routePath);
         },

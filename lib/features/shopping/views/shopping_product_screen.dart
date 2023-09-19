@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hodoo_point/constants/gaps.dart';
+import 'package:hodoo_point/features/shopping/views/widgets/shopping_buy_option_sheet.dart';
+import 'package:hodoo_point/utils/unicons.dart';
 import 'package:hodoo_point/widgets/hodoo_sliver_app_bar.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -129,61 +131,43 @@ class _ShoppingProductScreenState extends State<ShoppingProductScreen> {
           // bottom sheet
           Align(
               alignment: Alignment.bottomCenter,
-              child: Container(
-                padding: const EdgeInsets.only(
-                  right: Gaps.size2,
-                  left: Gaps.size2,
-                  top: Gaps.size3,
-                ),
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(colors: [
-                  Colors.white,
-                  Colors.white,
-                  Colors.white,
-                  Colors.white,
-                  Colors.white.withOpacity(0.7),
-                  Colors.white.withOpacity(0.0),
-                ], begin: Alignment.bottomCenter, end: Alignment.topCenter)),
-                child: SafeArea(
-                  top: false,
-                  child: Row(
-                    children: [
-                      IconButton(onPressed: () {}, icon: Icon(Icons.favorite)),
-                      Expanded(
-                          child: FilledButton(
-                              onPressed: () {
-                                showModalBottomSheet(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return Container(
-                                        color: Colors.white,
-                                        child: ListView(
-                                          shrinkWrap: true,
-                                          controller: ScrollController(),
-                                          children: [
-                                            Container(
-                                              padding: const EdgeInsets.all(
-                                                  Gaps.size2),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Text('옵션선택'),
-                                                  Icon(Icons.expand_more)
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    });
-                              },
-                              style: FilledButton.styleFrom(
+              child: SafeArea(
+                minimum: const EdgeInsets.only(bottom: Gaps.size2),
+                child: Container(
+                  padding: const EdgeInsets.only(
+                    right: Gaps.size2,
+                    left: Gaps.size2,
+                    top: Gaps.size3,
+                  ),
+                  child: SafeArea(
+                    top: false,
+                    child: Row(
+                      children: [
+                        FilledButton(
+                            style: FilledButton.styleFrom(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: Gaps.size2),
                                 minimumSize: Size(0, 50),
-                              ),
-                              child: Text('구매하기'))),
-                    ],
+                                backgroundColor:
+                                    Theme.of(context).scaffoldBackgroundColor),
+                            onPressed: () {},
+                            child: Unicons.svg('fi-rr-heart')),
+                        Gaps.h2,
+                        Expanded(
+                            child: FilledButton(
+                                onPressed: () {
+                                  showModalBottomSheet(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return ShoppingBuyOptionSheet();
+                                      });
+                                },
+                                style: FilledButton.styleFrom(
+                                  minimumSize: Size(0, 50),
+                                ),
+                                child: Text('구매하기'))),
+                      ],
+                    ),
                   ),
                 ),
               ))

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hodoo_point/services/unicons.dart';
 
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({super.key});
@@ -15,14 +14,14 @@ class NotificationScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
-            icon: Unicons.svg('fi-rr-cross-small'),
+            icon: const Icon(Icons.close),
             onPressed: () {
               context.pop();
             },
           ),
         ],
       ),
-      body: Center(child: Text('알림')),
+      body: const Center(child: Text('알림')),
     );
   }
 }

@@ -35,7 +35,7 @@ class LoginButton extends StatelessWidget {
         onPressed: onPressed,
         backgroundColor: Colors.white,
         label: Text(label, style: const TextStyle(color: Colors.blueAccent)),
-        icon: Image.asset('assets/images/icons/flaticon/authentication.png'),
+        icon: SvgPicture.asset('assets/images/icons/logins/mobile-app.svg'),
         borderSide: const BorderSide(color: Colors.blueAccent),
         overlayColor: Colors.blueAccent.withOpacity(0.1));
   }
@@ -70,7 +70,7 @@ class LoginButton extends StatelessWidget {
             if (icon != null)
               Align(
                   alignment: Alignment.centerLeft,
-                  child: SizedBox(width: 20, height: 20, child: icon!)),
+                  child: SizedBox(width: 30, child: icon!)),
             Gaps.h1,
             Center(
               child: DefaultTextStyle.merge(

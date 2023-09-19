@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/constants/gaps.dart';
 import 'package:hodoo_point/features/authentication/models/member.dart';
 import 'package:hodoo_point/features/authentication/states/auth_notifier.dart';
-import 'package:hodoo_point/services/unicons.dart';
+import 'package:hodoo_point/utils/unicons.dart';
 
 class HomeMember extends ConsumerWidget {
   const HomeMember({
@@ -305,6 +305,7 @@ class HomeMember extends ConsumerWidget {
                       Row(
                         children: [
                           Expanded(
+                            flex: 2,
                             child: FilledButton.icon(
                               onPressed: () {
                                 context.push('/login');
@@ -316,20 +317,18 @@ class HomeMember extends ConsumerWidget {
                                 backgroundColor: Theme.of(context)
                                     .colorScheme
                                     .primary
-                                    .withOpacity(0.1),
+                                    .withOpacity(.15),
                                 foregroundColor:
                                     Theme.of(context).colorScheme.primary,
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5),
+                                  borderRadius: BorderRadius.circular(8),
                                 ),
                               ),
                               label: const Text('로그인'),
-                              icon: SizedBox(
-                                width: 18,
-                                child: Unicons.svg('fi-sr-user',
-                                    color: Colors.white,
-                                    padding: EdgeInsets.zero),
-                              ),
+                              icon: Unicons.svg('fi-sr-user',
+                                  color: Colors.white,
+                                  width: 20,
+                                  padding: EdgeInsets.zero),
                             ),
                           ),
                           Gaps.h1,
@@ -339,26 +338,20 @@ class HomeMember extends ConsumerWidget {
                                 context.push('/sign-up');
                               },
                               style: FilledButton.styleFrom(
+                                backgroundColor: Colors.grey[300],
                                 textStyle: const TextStyle(fontSize: 16),
                                 padding: const EdgeInsets.symmetric(
                                     vertical: Gaps.size2),
-                                backgroundColor: Theme.of(context)
-                                    .colorScheme
-                                    .primary
-                                    .withOpacity(0.1),
-                                foregroundColor:
-                                    Theme.of(context).colorScheme.primary,
+                                foregroundColor: Colors.grey[800],
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5),
+                                  borderRadius: BorderRadius.circular(8),
                                 ),
                               ),
                               label: const Text('회원가입'),
-                              icon: SizedBox(
-                                width: 18,
-                                child: Unicons.svg('fi-sr-user-add',
-                                    color: Colors.white,
-                                    padding: EdgeInsets.zero),
-                              ),
+                              icon: Unicons.svg('fi-rr-user-pen',
+                                  color: Colors.grey[800],
+                                  width: 20,
+                                  padding: EdgeInsets.zero),
                             ),
                           ),
                         ],

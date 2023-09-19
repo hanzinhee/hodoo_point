@@ -4,7 +4,7 @@ import 'package:hodoo_point/features/root/widgets/root_app_bar.dart';
 import 'package:hodoo_point/features/shopping/views/widgets/shopping_category_tab.dart';
 import 'package:hodoo_point/features/shopping/views/widgets/shopping_group_tab_bar.dart';
 import 'package:hodoo_point/features/shopping/views/widgets/shopping_two_column_item_list.dart';
-import 'package:hodoo_point/services/unicons.dart';
+import 'package:hodoo_point/utils/unicons.dart';
 import 'package:hodoo_point/widgets/loop_banner.dart';
 
 class ShoppingScreen extends StatelessWidget {
@@ -24,7 +24,7 @@ class ShoppingScreen extends StatelessWidget {
                 onPressed: () {},
               ),
               IconButton(
-                icon: Unicons.svg('fi-rr-document-signed'),
+                icon: Unicons.svg('fi-rr-receipt'),
                 onPressed: () {},
               ),
             ],
