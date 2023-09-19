@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_naver_login/flutter_naver_login.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hodoo_point/features/authentication/models/member.dart';
@@ -20,13 +21,13 @@ class AuthRepository {
 
   Future<Members?> signInWithNaver() async {
     final NaverLoginResult result = await FlutterNaverLogin.logIn();
-    final dd = result.account.id.length;
     return result.status == NaverLoginStatus.loggedIn
         ? await Members.naver(result.account)
         : null;
   }
 
   Future<Members?> signInWithKakao() async {
+    // debugPrint(await KakaoSdk.origin); // 키 해시 값 확인
     if (await isKakaoTalkInstalled()) {
       await UserApi.instance.loginWithKakaoTalk();
     } else {
