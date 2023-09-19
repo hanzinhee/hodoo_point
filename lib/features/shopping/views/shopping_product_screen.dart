@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hodoo_point/constants/gaps.dart';
 import 'package:hodoo_point/features/shopping/views/widgets/shopping_buy_option_sheet.dart';
-import 'package:hodoo_point/utils/unicons.dart';
+import 'package:hodoo_point/features/shopping/views/widgets/shopping_product_like_button.dart';
 import 'package:hodoo_point/widgets/hodoo_sliver_app_bar.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -120,7 +120,7 @@ class _ShoppingProductScreenState extends State<ShoppingProductScreen> {
                 CachedNetworkImage(
                     imageUrl:
                         'https://picsum.photos/500/3000/?vv=${widget.productId}'),
-                ListTile(
+                const ListTile(
                   title: Text('상품 기본정보'),
                   trailing: Icon(Icons.chevron_right_rounded),
                 ),
@@ -143,15 +143,9 @@ class _ShoppingProductScreenState extends State<ShoppingProductScreen> {
                     top: false,
                     child: Row(
                       children: [
-                        FilledButton(
-                            style: FilledButton.styleFrom(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: Gaps.size2),
-                                minimumSize: Size(0, 50),
-                                backgroundColor:
-                                    Theme.of(context).scaffoldBackgroundColor),
-                            onPressed: () {},
-                            child: Unicons.svg('fi-rr-heart')),
+                        const ShoppingProductLikeButton(
+                            // isLiked: true,
+                            ),
                         Gaps.h2,
                         Expanded(
                             child: FilledButton(
@@ -159,13 +153,13 @@ class _ShoppingProductScreenState extends State<ShoppingProductScreen> {
                                   showModalBottomSheet(
                                       context: context,
                                       builder: (BuildContext context) {
-                                        return ShoppingBuyOptionSheet();
+                                        return const ShoppingBuyOptionSheet();
                                       });
                                 },
                                 style: FilledButton.styleFrom(
-                                  minimumSize: Size(0, 50),
+                                  minimumSize: const Size(0, 50),
                                 ),
-                                child: Text('구매하기'))),
+                                child: const Text('구매하기'))),
                       ],
                     ),
                   ),
