@@ -151,6 +151,7 @@ class _ShoppingProductScreenState extends State<ShoppingProductScreen> {
                             child: FilledButton(
                                 onPressed: () {
                                   showModalBottomSheet(
+                                      isScrollControlled: true,
                                       context: context,
                                       builder: (BuildContext context) {
                                         return const ShoppingBuyOptionSheet();
