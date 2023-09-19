@@ -39,6 +39,7 @@ class RootScaffold extends StatelessWidget {
     final activeColor = Theme.of(RootNavigation.context).colorScheme.primary;
     return BottomNavigationBarItem(
         icon: Unicons.svg(uniconsName,
+            color: Colors.grey[700],
             padding: const EdgeInsets.symmetric(vertical: 8)),
         activeIcon: Unicons.svg(uniconsName,
             color: activeColor,
