@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/constants/gaps.dart';
 import 'package:hodoo_point/features/authentication/models/member.dart';
 import 'package:hodoo_point/features/authentication/states/auth_notifier.dart';
+import 'package:hodoo_point/features/authentication/views/widgets/login_button.dart';
 import 'package:hodoo_point/widgets/hodoo_app_bar.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
@@ -111,36 +113,17 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               ],
             ),
             Gaps.v3,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ClipOval(
-                    child: Image.asset(
-                  'assets/images/icons/company/apple.png',
-                  width: 44,
-                )),
-                GestureDetector(
-                  onTap: () {
-                    signIn(LoginKind.kakao);
-                  },
-                  child: ClipOval(
-                      child: Image.asset(
-                    'assets/images/icons/company/kakao.png',
-                    width: 44,
-                  )),
-                ),
-                GestureDetector(
-                  onTap: () async {
-                    signIn(LoginKind.naver);
-                  },
-                  child: ClipOval(
-                      child: Image.asset(
-                    'assets/images/icons/company/naver.png',
-                    width: 44,
-                  )),
-                ),
-              ],
-            ),
+            LoginButton.naver(onPressed: () {
+              signIn(LoginKind.naver);
+            }),
+            Gaps.v1,
+            LoginButton.kakao(onPressed: () {
+              signIn(LoginKind.kakao);
+            }),
+            Gaps.v1,
+            LoginButton.mobile(onPressed: () {
+              signIn(LoginKind.mobile);
+            }),
             Gaps.v4,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
