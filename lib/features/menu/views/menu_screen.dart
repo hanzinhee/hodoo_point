@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/constants/gaps.dart';
 import 'package:hodoo_point/utils/unicons.dart';
@@ -80,8 +81,8 @@ class _MenuScreenState extends State<MenuScreen> {
                   Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Image.asset(
-                        'assets/images/icons/flaticon/free-icon-payment-4565114.png',
+                      SvgPicture.asset(
+                        'assets/images/icons/flaticon/payment.svg',
                         width: 40,
                       ),
                       Gaps.v1,
@@ -91,8 +92,8 @@ class _MenuScreenState extends State<MenuScreen> {
                   Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Image.asset(
-                        'assets/images/icons/flaticon/free-icon-refund-4117938.png',
+                      SvgPicture.asset(
+                        'assets/images/icons/flaticon/point-charging.svg',
                         width: 40,
                       ),
                       Gaps.v1,
@@ -102,8 +103,8 @@ class _MenuScreenState extends State<MenuScreen> {
                   Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Image.asset(
-                        'assets/images/icons/flaticon/free-icon-smartphone-4116978.png',
+                      SvgPicture.asset(
+                        'assets/images/icons/flaticon/point-save.svg',
                         width: 40,
                       ),
                       Gaps.v1,
@@ -119,8 +120,8 @@ class _MenuScreenState extends State<MenuScreen> {
                   Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Image.asset(
-                        'assets/images/icons/flaticon/free-icon-payment-4565110.png',
+                      SvgPicture.asset(
+                        'assets/images/icons/flaticon/change.svg',
                         width: 40,
                       ),
                       Gaps.v1,
@@ -130,8 +131,8 @@ class _MenuScreenState extends State<MenuScreen> {
                   Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Image.asset(
-                        'assets/images/icons/flaticon/free-icon-cash-withdrawal-4117790.png',
+                      SvgPicture.asset(
+                        'assets/images/icons/flaticon/atm.svg',
                         width: 40,
                       ),
                       Gaps.v1,
@@ -141,8 +142,8 @@ class _MenuScreenState extends State<MenuScreen> {
                   Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Image.asset(
-                        'assets/images/icons/flaticon/free-icon-coupon-4396750.png',
+                      SvgPicture.asset(
+                        'assets/images/icons/flaticon/coupon.svg',
                         width: 40,
                       ),
                       Gaps.v1,

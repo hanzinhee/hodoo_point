@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/constants/gaps.dart';
 import 'package:hodoo_point/features/authentication/models/member.dart';
@@ -132,9 +133,10 @@ class HomeMember extends ConsumerWidget {
                                             MainAxisAlignment.center,
                                         children: [
                                           SizedBox(
-                                            width: 20,
-                                            child: Image.asset(
-                                              'assets/images/icons/flaticon/free-icon-code-4565051.png',
+                                            width: 24,
+                                            height: 24,
+                                            child: SvgPicture.asset(
+                                              'assets/images/icons/flaticon/add-credit-card.svg',
                                             ),
                                           ),
                                           Gaps.h1,
@@ -168,9 +170,10 @@ class HomeMember extends ConsumerWidget {
                                             MainAxisAlignment.center,
                                         children: [
                                           SizedBox(
-                                            width: 20,
-                                            child: Image.asset(
-                                              'assets/images/icons/flaticon/free-icon-bank-4564970.png',
+                                            width: 24,
+                                            height: 24,
+                                            child: SvgPicture.asset(
+                                              'assets/images/icons/flaticon/add-bank-account.svg',
                                             ),
                                           ),
                                           Gaps.h1,
@@ -218,8 +221,8 @@ class HomeMember extends ConsumerWidget {
                               Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Image.asset(
-                                    'assets/images/icons/flaticon/free-icon-payment-4565114.png',
+                                  SvgPicture.asset(
+                                    'assets/images/icons/flaticon/payment.svg',
                                     width: 40,
                                   ),
                                   Gaps.v1,
@@ -229,8 +232,8 @@ class HomeMember extends ConsumerWidget {
                               Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Image.asset(
-                                    'assets/images/icons/flaticon/free-icon-refund-4117938.png',
+                                  SvgPicture.asset(
+                                    'assets/images/icons/flaticon/point-charging.svg',
                                     width: 40,
                                   ),
                                   Gaps.v1,
@@ -240,8 +243,8 @@ class HomeMember extends ConsumerWidget {
                               Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Image.asset(
-                                    'assets/images/icons/flaticon/free-icon-smartphone-4116978.png',
+                                  SvgPicture.asset(
+                                    'assets/images/icons/flaticon/point-save.svg',
                                     width: 40,
                                   ),
                                   Gaps.v1,
@@ -257,8 +260,8 @@ class HomeMember extends ConsumerWidget {
                               Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Image.asset(
-                                    'assets/images/icons/flaticon/free-icon-payment-4565110.png',
+                                  SvgPicture.asset(
+                                    'assets/images/icons/flaticon/change.svg',
                                     width: 40,
                                   ),
                                   Gaps.v1,
@@ -268,8 +271,8 @@ class HomeMember extends ConsumerWidget {
                               Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Image.asset(
-                                    'assets/images/icons/flaticon/free-icon-cash-withdrawal-4117790.png',
+                                  SvgPicture.asset(
+                                    'assets/images/icons/flaticon/atm.svg',
                                     width: 40,
                                   ),
                                   Gaps.v1,
@@ -279,8 +282,8 @@ class HomeMember extends ConsumerWidget {
                               Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Image.asset(
-                                    'assets/images/icons/flaticon/free-icon-coupon-4396750.png',
+                                  SvgPicture.asset(
+                                    'assets/images/icons/flaticon/coupon.svg',
                                     width: 40,
                                   ),
                                   Gaps.v1,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:hodoo_point/constants/gaps.dart';
 import 'package:hodoo_point/features/payment/views/widgets/point_card_sheet.dart';
 import 'package:hodoo_point/utils/unicons.dart';
@@ -84,8 +85,8 @@ class _PaymentSlideViewState extends State<PaymentSlideView> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.asset(
-                              'assets/images/icons/flaticon/free-icon-code-4565051.png',
+                            SvgPicture.asset(
+                              'assets/images/icons/flaticon/add-credit-card-lineal.svg',
                               width: 60,
                             ),
                             Gaps.v1,
@@ -100,8 +101,8 @@ class _PaymentSlideViewState extends State<PaymentSlideView> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.asset(
-                              'assets/images/icons/flaticon/free-icon-bank-4564970.png',
+                            SvgPicture.asset(
+                              'assets/images/icons/flaticon/add-bank-account-lineal.svg',
                               width: 60,
                             ),
                             Gaps.v1,

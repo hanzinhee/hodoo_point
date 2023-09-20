@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/constants/gaps.dart';
 import 'package:hodoo_point/features/notice/views/widgets/notice_app_bar.dart';
+import 'package:hodoo_point/widgets/empty_sign.dart';
 import 'package:hodoo_point/widgets/three_rotating_dot_indicator.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:intl/intl.dart';
@@ -86,20 +87,9 @@ class _NoticeScreenState extends State<NoticeScreen> {
               newPageProgressIndicatorBuilder: (_) => Container(
                   padding: const EdgeInsets.all(Gaps.size2),
                   child: const ThreeRotatingDots(size: 20)),
-              noItemsFoundIndicatorBuilder: (_) => Center(
-                  child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Image.asset(
-                    'assets/images/icons/flaticon/empty-box.png',
-                    width: 90,
-                  ),
-                  Gaps.v1,
-                  const Text(
-                    '공지사항이 없습니다.',
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                ],
+              noItemsFoundIndicatorBuilder: (_) => const Center(
+                  child: EmptySign(
+                text: '공지사항이 없습니다.',
               )),
               noMoreItemsIndicatorBuilder: (_) => Container(
                   alignment: Alignment.center,

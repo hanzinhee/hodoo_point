@@ -31,7 +31,7 @@ class _ThreeRotatingDotsState extends State<ThreeRotatingDots>
   Widget build(BuildContext context) {
     final double size = widget.size;
     final double dotSize = size / 3;
-    final double edgeOffset = (size - dotSize) / 2;
+    final double edgeOffset = (size - dotSize) * 0.8;
 
     const Interval firstDotsInterval = Interval(
       0.0,
