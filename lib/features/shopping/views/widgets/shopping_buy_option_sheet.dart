@@ -47,77 +47,81 @@ class _ShoppingBuyOptionSheetState extends State<ShoppingBuyOptionSheet> {
         Gaps.size2;
 
     return OverlayEntry(
-      maintainState: true,
-      builder: (dialogContext) => Positioned(
-        width: MediaQuery.of(context).size.width,
+      builder: (context) => Align(
         child: CompositedTransformFollower(
           link: _layerLink,
           offset: Offset(0, boxHeight + 4),
-          child: Material(
-            color: Colors.transparent,
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: Gaps.size2),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(color: Colors.black26, width: 0.5),
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    blurRadius: 3,
-                    offset: const Offset(0, 0),
-                  ),
-                ],
-              ),
-              child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  maxHeight: maxHeight,
-                ),
-                child: ListView(
-                  physics: const ClampingScrollPhysics(),
-                  padding: const EdgeInsets.all(Gaps.size2),
-                  shrinkWrap: true,
-                  children: [
-                    for (int i = 0; i < 10; i++) ...[
-                      InkWell(
-                        onTap: () {
-                          // 중복 제거
-                          if (_options
-                              .map((e) => e.$1)
-                              .toList()
-                              .contains('옵션 $i')) {
-                            showToast(context: context, text: '이미 선택된 옵션입니다.');
-                            return;
-                          }
-
-                          setState(() {
-                            _options.add(('옵션 $i', 1, 20000));
-                          });
-                          _removeOverlay();
-                        },
-                        child: Row(
-                          children: [
-                            CachedNetworkImage(
-                              imageUrl:
-                                  'https://picsum.photos/100/100/?option=$i',
-                              width: 50,
-                            ),
-                            Gaps.h2,
-                            Text('옵션 $i'),
-                            const Spacer(),
-                            Text(
-                              NumberFormat(',###').format(20000),
-                              style: const TextStyle(fontSize: 14),
-                            ),
-                          ],
-                        ),
-                      ),
-                      if (i < 10 - 1)
-                        const Divider(
-                          color: Colors.black12,
-                        )
-                    ]
+          child: ConstrainedBox(
+            // 폴더블 폰 대응
+            // BottomSheet > _BottomSheetDefaultsM3 constrants 참조
+            constraints: const BoxConstraints(maxWidth: 640),
+            child: Material(
+              color: Colors.transparent,
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: Gaps.size2),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(color: Colors.black26, width: 0.5),
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      blurRadius: 3,
+                      offset: const Offset(0, 0),
+                    ),
                   ],
+                ),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxHeight: maxHeight,
+                  ),
+                  child: ListView(
+                    physics: const ClampingScrollPhysics(),
+                    padding: const EdgeInsets.all(Gaps.size2),
+                    shrinkWrap: true,
+                    children: [
+                      for (int i = 0; i < 10; i++) ...[
+                        InkWell(
+                          onTap: () {
+                            // 중복 제거
+                            if (_options
+                                .map((e) => e.$1)
+                                .toList()
+                                .contains('옵션 $i')) {
+                              showToast(
+                                  context: context, text: '이미 선택된 옵션입니다.');
+                              return;
+                            }
+
+                            setState(() {
+                              _options.add(('옵션 $i', 1, 20000));
+                            });
+                            _removeOverlay();
+                          },
+                          child: Row(
+                            children: [
+                              CachedNetworkImage(
+                                imageUrl:
+                                    'https://picsum.photos/100/100/?option=$i',
+                                width: 50,
+                              ),
+                              Gaps.h2,
+                              Text('옵션 $i'),
+                              const Spacer(),
+                              Text(
+                                NumberFormat(',###').format(20000),
+                                style: const TextStyle(fontSize: 14),
+                              ),
+                            ],
+                          ),
+                        ),
+                        if (i < 10 - 1)
+                          const Divider(
+                            color: Colors.black12,
+                          )
+                      ]
+                    ],
+                  ),
                 ),
               ),
             ),
