@@ -27,10 +27,11 @@ class AuthRepository {
 
   Future<Members?> signInWithKakao() async {
     // debugPrint(await KakaoSdk.origin); // 키 해시 값 확인
+    OAuthToken token;
     if (await isKakaoTalkInstalled()) {
-      await UserApi.instance.loginWithKakaoTalk();
+      token = await UserApi.instance.loginWithKakaoTalk();
     } else {
-      await UserApi.instance.loginWithKakaoAccount();
+      token = await UserApi.instance.loginWithKakaoAccount();
     }
     final User user = await UserApi.instance.me();
     return Members.kakao(user);
