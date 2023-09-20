@@ -93,13 +93,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               ],
             ),
             Gaps.v1,
-            FilledButton(
-                onPressed: () {
-                  signIn(LoginKind.mobile);
-                },
-                style: FilledButton.styleFrom(
-                    minimumSize: const Size(double.infinity, 50)),
-                child: const Text('로그인', style: TextStyle(fontSize: 20))),
+            SizedBox(
+              height: 50,
+              child: FilledButton(
+                  onPressed: () {
+                    signIn(LoginKind.mobile);
+                  },
+                  child: const Text('로그인', style: TextStyle(fontSize: 20))),
+            ),
             Gaps.v3,
             const Row(
               children: [

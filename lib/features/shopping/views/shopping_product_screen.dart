@@ -154,19 +154,19 @@ class _ShoppingProductScreenState extends State<ShoppingProductScreen> {
                         ),
                         Gaps.h2,
                         Expanded(
-                            child: FilledButton(
-                                onPressed: () {
-                                  showModalBottomSheet(
-                                      useRootNavigator: true,
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return const ShoppingBuyOptionSheet();
-                                      });
-                                },
-                                style: FilledButton.styleFrom(
-                                  minimumSize: const Size(0, 50),
-                                ),
-                                child: const Text('구매하기'))),
+                            child: SizedBox(
+                          height: 50,
+                          child: FilledButton(
+                              onPressed: () {
+                                showModalBottomSheet(
+                                    useRootNavigator: true,
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return const ShoppingBuyOptionSheet();
+                                    });
+                              },
+                              child: const Text('구매하기')),
+                        )),
                       ],
                     ),
                   ),
