@@ -40,13 +40,9 @@ class App extends ConsumerWidget {
           fontFamily: 'Pretendard',
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
           useMaterial3: true,
-          textSelectionTheme:
-              const TextSelectionThemeData(cursorColor: Colors.blueAccent),
           appBarTheme: const AppBarTheme(surfaceTintColor: Colors.transparent),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blueAccent,
-              foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
@@ -54,8 +50,6 @@ class App extends ConsumerWidget {
           ),
           filledButtonTheme: FilledButtonThemeData(
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blueAccent,
-              foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
@@ -91,13 +85,6 @@ class App extends ConsumerWidget {
             surfaceTintColor: Colors.transparent,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
-            ),
-          ),
-          bottomSheetTheme: BottomSheetThemeData(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(Gaps.size3),
-              ),
             ),
           ),
         ),
