@@ -6,7 +6,7 @@ import 'package:hodoo_point/constants/section_divider.dart';
 import 'package:hodoo_point/features/authentication/states/auth_notifier.dart';
 import 'package:hodoo_point/features/authentication/views/login_screen.dart';
 import 'package:hodoo_point/features/root/widgets/root_app_bar.dart';
-import 'package:hodoo_point/widgets/hodoo_sliver_app_bar.dart';
+import 'package:hodoo_point/common/widgets/hodoo_sliver_app_bar.dart';
 
 class SettingScreen extends ConsumerWidget {
   const SettingScreen({super.key});

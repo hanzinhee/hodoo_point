@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hodoo_point/constants/gaps.dart';
 import 'package:hodoo_point/features/shopping/views/widgets/shopping_buy_option_sheet.dart';
 import 'package:hodoo_point/features/shopping/views/widgets/shopping_product_like_button.dart';
-import 'package:hodoo_point/widgets/hodoo_sliver_app_bar.dart';
+import 'package:hodoo_point/common/widgets/hodoo_sliver_app_bar.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ShoppingProductScreen extends StatefulWidget {

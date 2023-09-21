@@ -5,7 +5,7 @@ import 'package:hodoo_point/features/shopping/views/widgets/shopping_category_ta
 import 'package:hodoo_point/features/shopping/views/widgets/shopping_group_tab_bar.dart';
 import 'package:hodoo_point/features/shopping/views/widgets/shopping_two_column_item_list.dart';
 import 'package:hodoo_point/utils/unicons.dart';
-import 'package:hodoo_point/widgets/loop_banner.dart';
+import 'package:hodoo_point/common/widgets/loop_banner.dart';
 
 class ShoppingScreen extends StatelessWidget {
   const ShoppingScreen({super.key});

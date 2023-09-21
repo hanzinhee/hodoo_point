@@ -5,7 +5,7 @@ import 'package:hodoo_point/constants/gaps.dart';
 import 'package:hodoo_point/features/authentication/models/member.dart';
 import 'package:hodoo_point/features/authentication/states/auth_notifier.dart';
 import 'package:hodoo_point/features/authentication/views/widgets/login_button.dart';
-import 'package:hodoo_point/widgets/hodoo_app_bar.dart';
+import 'package:hodoo_point/common/widgets/hodoo_app_bar.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hodoo_point/constants/gaps.dart';
 import 'package:hodoo_point/features/authentication/views/widgets/login_button.dart';
-import 'package:hodoo_point/widgets/hodoo_app_bar.dart';
+import 'package:hodoo_point/common/widgets/hodoo_app_bar.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});

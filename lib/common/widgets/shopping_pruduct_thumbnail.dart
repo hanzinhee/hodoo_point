@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hodoo_point/widgets/shimmer_image.dart';
+import 'package:hodoo_point/common/widgets/shimmer_image.dart';
 
 class ShoppingProductThumbnail extends StatelessWidget {
   const ShoppingProductThumbnail({super.key, required this.imageUrl});

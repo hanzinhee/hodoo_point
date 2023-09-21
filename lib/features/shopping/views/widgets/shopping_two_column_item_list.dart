@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/constants/gaps.dart';
-import 'package:hodoo_point/widgets/shopping_pruduct_thumbnail.dart';
+import 'package:hodoo_point/common/widgets/shopping_pruduct_thumbnail.dart';
 
 class ShoppingTwoColumnItemList extends StatelessWidget {
   const ShoppingTwoColumnItemList({

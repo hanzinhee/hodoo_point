@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hodoo_point/widgets/empty_sign.dart';
+import 'package:hodoo_point/common/widgets/empty_sign.dart';
 
 class ShoppingInvalidProductScreen extends StatelessWidget {
   const ShoppingInvalidProductScreen({super.key});

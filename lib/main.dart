@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hodoo_point/router.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
@@ -17,6 +18,7 @@ Future<void> main() async {
     nativeAppKey: '1006e12a57907bac82dff3a214de7f48',
     javaScriptAppKey: '63b5f9495c97c2f37682797281ab2ff8',
   );
+  await dotenv.load(fileName: ".env");
 
   runApp(DevicePreview(
       enabled: kIsWeb,

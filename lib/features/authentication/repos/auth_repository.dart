@@ -37,7 +37,7 @@ class AuthRepository {
   Future<Members?> signInWithNaver() async {
     final NaverLoginResult result = await FlutterNaverLogin.logIn();
     return result.status == NaverLoginStatus.loggedIn
-        ? await Members.naver(result.account)
+        ? Members.naver(result.account)
         : null;
   }
 

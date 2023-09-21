@@ -7,8 +7,8 @@ import 'package:hodoo_point/features/home/views/widgets/home_section_container.d
 import 'package:hodoo_point/features/root/widgets/root_app_bar.dart';
 import 'package:hodoo_point/utils/unicons.dart';
 import 'package:hodoo_point/utils/dialog.dart';
-import 'package:hodoo_point/widgets/loop_banner.dart';
-import 'package:hodoo_point/widgets/shopping_pruduct_thumbnail.dart';
+import 'package:hodoo_point/common/widgets/loop_banner.dart';
+import 'package:hodoo_point/common/widgets/shopping_pruduct_thumbnail.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
