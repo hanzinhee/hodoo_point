@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hodoo_point/constants/gaps.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LoopBanner extends StatefulWidget {
   const LoopBanner({
@@ -80,31 +81,40 @@ class _LoopBannerState extends State<LoopBanner> {
               controller: controller,
               physics: const BouncingScrollPhysics(),
               itemBuilder: (_, index) {
-                return Container(
-                  margin: widget.margin,
-                  child: ClipRRect(
-                    borderRadius: widget.borderRadius,
-                    child: CachedNetworkImage(
-                      color: [
-                        Colors.blue,
-                        Colors.deepOrange,
-                        Colors.amber,
-                        Colors.green,
-                        Colors.deepPurple,
-                      ][index % widget.urls.length]
-                          .withOpacity(0.7),
-                      colorBlendMode: BlendMode.srcATop,
-                      imageUrl: widget.urls[index % widget.urls.length],
-                      fit: BoxFit.cover,
-                      placeholder: (context, url) => Shimmer.fromColors(
-                        baseColor: Colors.grey[200]!,
-                        highlightColor: Colors.grey[50]!,
-                        child: Container(
-                          color: Colors.white,
+                return GestureDetector(
+                  onTap: () async {
+                    final Uri launchUri = Uri(
+                      scheme: 'https',
+                      path: 'pub.dev',
+                    );
+                    await launchUrl(launchUri, mode: LaunchMode.inAppWebView);
+                  },
+                  child: Container(
+                    margin: widget.margin,
+                    child: ClipRRect(
+                      borderRadius: widget.borderRadius,
+                      child: CachedNetworkImage(
+                        color: [
+                          Colors.blue,
+                          Colors.deepOrange,
+                          Colors.amber,
+                          Colors.green,
+                          Colors.deepPurple,
+                        ][index % widget.urls.length]
+                            .withOpacity(0.7),
+                        colorBlendMode: BlendMode.srcATop,
+                        imageUrl: widget.urls[index % widget.urls.length],
+                        fit: BoxFit.cover,
+                        placeholder: (context, url) => Shimmer.fromColors(
+                          baseColor: Colors.grey[200]!,
+                          highlightColor: Colors.grey[50]!,
+                          child: Container(
+                            color: Colors.white,
+                          ),
                         ),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
                       ),
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
                     ),
                   ),
                 );
