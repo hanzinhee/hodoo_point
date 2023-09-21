@@ -32,7 +32,6 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
-                <data android:scheme="kakao1006e12a57907bac82dff3a214de7f48" android:host="oauth"/>
             </intent-filter>
         </activity>
         <!-- 카카오 로그인 커스텀 URL 스킴 설정 -->
