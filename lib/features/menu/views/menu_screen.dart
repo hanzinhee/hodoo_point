@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/constants/gaps.dart';
+import 'package:hodoo_point/features/setting/setting_screen.dart';
 import 'package:hodoo_point/utils/unicons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -27,6 +28,11 @@ class _MenuScreenState extends State<MenuScreen> {
             },
             icon: Unicons.svg('fi-rr-home')),
         actions: [
+          IconButton(
+              onPressed: () {
+                context.push(SettingScreen.routePath);
+              },
+              icon: Unicons.svg('fi-rr-settings')),
           IconButton(
             onPressed: () {
               context.pop();

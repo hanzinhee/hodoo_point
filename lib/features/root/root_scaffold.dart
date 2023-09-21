@@ -25,7 +25,7 @@ class RootScaffold extends StatelessWidget {
           _buildBarItem(uniconsName: 'fi-sr-gift', label: '해택'),
           _buildBarItem(uniconsName: 'fi-sr-shopping-bag', label: '쇼핑'),
           _buildBarItem(uniconsName: 'fi-sr-credit-card', label: '결제'),
-          _buildBarItem(uniconsName: 'fi-sr-settings', label: '설정'),
+          _buildBarItem(uniconsName: 'fi-sr-user', label: 'My'),
         ],
         onTap: _onTap,
       ),

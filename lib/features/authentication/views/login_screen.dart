@@ -131,12 +131,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 const Text('아직 회원이 아니신가요?',
                     style: TextStyle(color: Colors.grey)),
                 TextButton(
-                    style: ButtonStyle(
-                      foregroundColor:
-                          MaterialStateProperty.all(Colors.blueAccent),
-                      overlayColor:
-                          MaterialStateProperty.all(Colors.transparent),
-                    ),
                     onPressed: () {
                       context.push('/sign-up');
                     },

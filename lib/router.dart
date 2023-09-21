@@ -3,12 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/features/authentication/views/sign_up_screen.dart';
 import 'package:hodoo_point/features/home/views/home_screen.dart';
+import 'package:hodoo_point/features/my_page/my_page_screen.dart';
 import 'package:hodoo_point/features/notice/views/notice_detail_screen.dart';
 import 'package:hodoo_point/features/notice/views/notice_screen.dart';
 import 'package:hodoo_point/features/payment/views/payment_screen.dart';
 import 'package:hodoo_point/features/root/root_scaffold.dart';
 import 'package:hodoo_point/features/authentication/views/login_screen.dart';
-import 'package:hodoo_point/features/lounge/lounge_screen.dart';
+import 'package:hodoo_point/features/setting/setting_screen.dart';
 import 'package:hodoo_point/features/menu/views/menu_screen.dart';
 import 'package:hodoo_point/features/notifications/notifications_screen.dart';
 import 'package:hodoo_point/features/shopping/views/shopping_invalid_product_screen.dart';
@@ -54,8 +55,8 @@ final routerProvider = Provider((ref) {
             StatefulShellBranch(
               routes: <RouteBase>[
                 GoRoute(
-                  path: LoungeScreen.routePath,
-                  builder: (context, state) => const LoungeScreen(),
+                  path: MyPageScreen.routePath,
+                  builder: (context, state) => const MyPageScreen(),
                 ),
               ],
             ),
@@ -72,6 +73,10 @@ final routerProvider = Provider((ref) {
           parentNavigatorKey: RootNavigation.navigatorKey,
           path: NoticeScreen.routePath,
           builder: (context, state) => const NoticeScreen()),
+      GoRoute(
+          parentNavigatorKey: RootNavigation.navigatorKey,
+          path: SettingScreen.routePath,
+          builder: (context, state) => const SettingScreen()),
       GoRoute(
           parentNavigatorKey: RootNavigation.navigatorKey,
           path: NoticeDetailScreen.routePath,
