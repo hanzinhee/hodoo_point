@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/constants/gaps.dart';
+import 'package:hodoo_point/widgets/shopping_pruduct_thumbnail.dart';
 
 class ShoppingTwoColumnItemList extends StatelessWidget {
   const ShoppingTwoColumnItemList({
@@ -32,11 +33,9 @@ class ShoppingTwoColumnItemList extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(8),
-                                child: CachedNetworkImage(
-                                    imageUrl:
-                                        'https://picsum.photos/500/500/?vv=${i + j}'),
+                              ShoppingProductThumbnail(
+                                imageUrl:
+                                    'https://picsum.photos/400/400/?qvv=${i + j}',
                               ),
                               const Text('원데이 홍삼 골드 50ml * 30포',
                                   style: TextStyle()),

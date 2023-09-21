@@ -8,6 +8,7 @@ import 'package:hodoo_point/features/root/widgets/root_app_bar.dart';
 import 'package:hodoo_point/utils/unicons.dart';
 import 'package:hodoo_point/utils/dialog.dart';
 import 'package:hodoo_point/widgets/loop_banner.dart';
+import 'package:hodoo_point/widgets/shopping_pruduct_thumbnail.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -88,14 +89,9 @@ class HomeScreen extends StatelessWidget {
                                   mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(
-                                      height: 150,
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(5),
-                                        child: CachedNetworkImage(
-                                            imageUrl:
-                                                'https://picsum.photos/400/400/?s=$index'),
-                                      ),
+                                    ShoppingProductThumbnail(
+                                      imageUrl:
+                                          'https://picsum.photos/400/400/?gg=$index',
                                     ),
                                     const Text('1+1특가 [허니버터칩] 60g',
                                         style: TextStyle()),
@@ -155,46 +151,44 @@ class HomeScreen extends StatelessWidget {
                           itemBuilder: (BuildContext context, int index) {
                             return Padding(
                               padding: const EdgeInsets.only(left: Gaps.size2),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    height: 150,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(5),
-                                      child: CachedNetworkImage(
-                                          imageUrl:
-                                              'https://picsum.photos/400/400/?v=$index'),
+                              child: SizedBox(
+                                width: 150,
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    ShoppingProductThumbnail(
+                                      imageUrl:
+                                          'https://picsum.photos/400/400/?v=$index',
                                     ),
-                                  ),
-                                  const Text('1+1특가 [허니버터칩] 60g',
-                                      style: TextStyle()),
-                                  const Text('25,800원',
-                                      style: TextStyle(
-                                          letterSpacing: 0.3,
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 16,
-                                          color: Colors.blue)),
-                                  Row(
-                                    children: [
-                                      const Text(
-                                        '90%',
+                                    const Text('1+1특가 [허니버터칩] 60g',
+                                        style: TextStyle()),
+                                    const Text('25,800원',
                                         style: TextStyle(
-                                          color: Colors.red,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                      Gaps.h1,
-                                      Text('596,000',
+                                            letterSpacing: 0.3,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 16,
+                                            color: Colors.blue)),
+                                    Row(
+                                      children: [
+                                        const Text(
+                                          '90%',
                                           style: TextStyle(
-                                              fontSize: 12,
-                                              decoration:
-                                                  TextDecoration.lineThrough,
-                                              color: Colors.grey[700]))
-                                    ],
-                                  )
-                                ],
+                                            color: Colors.red,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                        Gaps.h1,
+                                        Text('596,000',
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                decoration:
+                                                    TextDecoration.lineThrough,
+                                                color: Colors.grey[700]))
+                                      ],
+                                    )
+                                  ],
+                                ),
                               ),
                             );
                           },
