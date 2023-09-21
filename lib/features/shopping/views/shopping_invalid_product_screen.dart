@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/widgets/empty_sign.dart';
 
@@ -23,7 +22,7 @@ class ShoppingInvalidProductScreen extends StatelessWidget {
                   },
                 ),
               ),
-            Center(
+            const Center(
               child: EmptySign(text: '상품이 존재하지 않습니다.'),
             ),
           ],
