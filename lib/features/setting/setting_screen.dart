@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/constants/gaps.dart';
 import 'package:hodoo_point/constants/section_divider.dart';
-import 'package:hodoo_point/features/authentication/states/auth_notifier.dart';
-import 'package:hodoo_point/features/authentication/views/login_screen.dart';
-import 'package:hodoo_point/features/root/widgets/root_app_bar.dart';
 import 'package:hodoo_point/common/widgets/hodoo_sliver_app_bar.dart';
 
-class SettingScreen extends ConsumerWidget {
+class SettingScreen extends ConsumerStatefulWidget {
   const SettingScreen({super.key});
   static String routePath = '/setting';
+
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final members = ref.watch(authProvider);
+  ConsumerState<ConsumerStatefulWidget> createState() => _SettingScreenState();
+}
+
+class _SettingScreenState extends ConsumerState<SettingScreen> {
+  bool chacked = true;
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
         body: CustomScrollView(
       slivers: [
@@ -56,8 +59,12 @@ class SettingScreen extends ConsumerWidget {
                     title: const Text('혜택 알림 동의'),
                     subtitle: const Text('호두 포인트에서 제공하는 다양한 혜택 알림을 받습니다.'),
                     trailing: Switch(
-                      value: true,
-                      onChanged: (value) {},
+                      value: chacked,
+                      onChanged: (value) {
+                        setState(() {
+                          chacked = !chacked;
+                        });
+                      },
                     ),
                   )
                 ],

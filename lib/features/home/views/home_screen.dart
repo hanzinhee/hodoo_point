@@ -9,6 +9,7 @@ import 'package:hodoo_point/utils/unicons.dart';
 import 'package:hodoo_point/utils/dialog.dart';
 import 'package:hodoo_point/common/widgets/loop_banner.dart';
 import 'package:hodoo_point/common/widgets/shopping_pruduct_thumbnail.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -204,10 +205,18 @@ class HomeScreen extends StatelessWidget {
               title: '제휴사',
               child: Column(
                 children: [
-                  for (int i = 0; i < 3; i++)
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: Gaps.size2, vertical: Gaps.size1),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: Gaps.size2, vertical: Gaps.size1),
+                    child: GestureDetector(
+                      onTap: () async {
+                        final Uri launchUri = Uri(
+                            scheme: 'https',
+                            path: 'play.google.com/store/apps/details',
+                            queryParameters: {'id': 'com.blogpay.calin0928'});
+                        await launchUrl(launchUri,
+                            mode: LaunchMode.externalApplication);
+                      },
                       child: SizedBox(
                         height: 100,
                         child: Row(
@@ -217,7 +226,7 @@ class HomeScreen extends StatelessWidget {
                               child: ClipOval(
                                 child: CachedNetworkImage(
                                     imageUrl:
-                                        'https://picsum.photos/400/400/?u=$i'),
+                                        'https://play-lh.googleusercontent.com/sDptUGcZJJ0IwJjtCj887XMpvrUJjZ54Gxl8qDjvsKZe7MBdpHU0m0QcuIKo4v-FSvI=w480-h960-rw'),
                               ),
                             ),
                             Gaps.h2,
@@ -231,16 +240,16 @@ class HomeScreen extends StatelessWidget {
                                       MainAxisAlignment.spaceAround,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const Text('필요한 가구는 내가 직접!',
+                                    const Text('트렌디한 제작상품 판매',
                                         style: TextStyle(fontSize: 14)),
                                     const Text(
-                                      '가구제작쇼핑몰 ',
+                                      '깔량 ',
                                       style: TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.w600),
                                     ),
                                     Text(
-                                      '#인스타 #가구제작 #가구공방 #주말공방 #DIY',
+                                      '#제작상품',
                                       style: TextStyle(
                                           fontSize: 12,
                                           color: Colors.grey[700]!),
@@ -252,7 +261,65 @@ class HomeScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                    )
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: Gaps.size2, vertical: Gaps.size1),
+                    child: GestureDetector(
+                      onTap: () async {
+                        final Uri launchUri =
+                            Uri(scheme: 'https', path: 'lupium.co.kr');
+                        await launchUrl(launchUri,
+                            mode: LaunchMode.externalApplication);
+                      },
+                      child: SizedBox(
+                        height: 100,
+                        child: Row(
+                          children: [
+                            ClipOval(
+                              child: SizedBox(
+                                width: 80,
+                                height: 80,
+                                child: CachedNetworkImage(
+                                    imageUrl:
+                                        'https://lupium.co.kr/_images/logo.png'),
+                              ),
+                            ),
+                            Gaps.h2,
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: Gaps.size1),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const Text('건강/뷰티 쇼핑몰',
+                                        style: TextStyle(fontSize: 14)),
+                                    const Text(
+                                      '루피움',
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                    Text(
+                                      '#뷰티',
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.grey[700]!),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
                 ],
               )),
           HomeSectionContainer(
