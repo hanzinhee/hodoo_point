@@ -1,15 +1,31 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_naver_login/flutter_naver_login.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:hodoo_point/features/authentication/models/member.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 
 class AuthRepository {
-  final Dio _dio = Dio();
+  final _accessTokenStorageKey = 'accessToken';
+  final _dio = Dio();
+  final _flutterSecureStorage = const FlutterSecureStorage(
+      aOptions: AndroidOptions(
+    encryptedSharedPreferences: true,
+  ));
 
   AuthRepository() {
     _dio.options.baseUrl = 'http://10.0.2.2:3000/api';
   }
+
+  Future<String?> getAccessToken() =>
+      _flutterSecureStorage.read(key: _accessTokenStorageKey);
+
+  void setAccessToken(String? accessToken) => _flutterSecureStorage.write(
+      key: _accessTokenStorageKey, value: accessToken);
+
+  void deleteAccessToken() =>
+      _flutterSecureStorage.delete(key: _accessTokenStorageKey);
+
   Members? signInWithMobile() {
     return Members(
         name: '홍길동',
