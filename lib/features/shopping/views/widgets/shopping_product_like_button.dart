@@ -21,7 +21,7 @@ class ShoppingProductLikeButton extends StatelessWidget {
           ),
           child: isLiked
               ? Unicons.svg('fi-sr-heart', color: Colors.redAccent)
-              : Unicons.svg('fi-rr-heart', color: Colors.grey)),
+              : Unicons.svg('fi-sr-heart', color: Colors.grey)),
     );
   }
 }
