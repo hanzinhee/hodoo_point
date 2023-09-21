@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_naver_login/flutter_naver_login.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -14,7 +15,7 @@ class AuthRepository {
   ));
 
   AuthRepository() {
-    _dio.options.baseUrl = 'http://10.0.2.2:3000/api';
+    _dio.options.baseUrl = dotenv.env['API_HOST']!;
   }
 
   Future<String?> getAccessToken() =>
