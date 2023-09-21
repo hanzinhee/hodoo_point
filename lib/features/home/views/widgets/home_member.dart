@@ -60,7 +60,7 @@ class HomeMember extends ConsumerWidget {
                                 ),
                                 child: Stack(
                                   children: [
-                                    Positioned(
+                                    const Positioned(
                                       top: 0,
                                       left: 0,
                                       child: Row(
@@ -68,14 +68,7 @@ class HomeMember extends ConsumerWidget {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
                                         children: [
-                                          SizedBox(
-                                            width: 10,
-                                            height: 10,
-                                            child: Unicons.svg(
-                                                'fi-rr-angle-small-left',
-                                                color: Colors.white),
-                                          ),
-                                          const Text(
+                                          Text(
                                             'MEMBERSHIP CARD',
                                             style: TextStyle(
                                                 fontSize: 6,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hodoo_point/widgets/hodoo_app_bar.dart';
+import 'package:go_router/go_router.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class NoticeDetailScreen extends StatefulWidget {
@@ -36,11 +36,17 @@ class _NoticeDetailScreenState extends State<NoticeDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: HodooAppBar(
-        title: const Text('공지사항'),
-        backgroundColor: Colors.blueGrey[50],
-      ),
-      body: WebViewWidget(controller: controller),
+      body: SafeArea(
+          child: Stack(
+        children: [
+          WebViewWidget(controller: controller),
+          IconButton(
+              onPressed: () {
+                context.pop();
+              },
+              icon: CircleAvatar(child: const Icon(Icons.arrow_back))),
+        ],
+      )),
     );
   }
 }

@@ -39,7 +39,6 @@ class App extends ConsumerWidget {
           fontFamily: 'Pretendard',
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
           useMaterial3: true,
-          appBarTheme: const AppBarTheme(surfaceTintColor: Colors.transparent),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
               shape: RoundedRectangleBorder(

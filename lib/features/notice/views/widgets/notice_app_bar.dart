@@ -16,6 +16,5 @@ class NoticeAppBar extends SliverAppBar {
                   )
                 : null,
             title: const Text('공지사항'),
-            backgroundColor: Colors.blueGrey[50],
             centerTitle: true);
 }
