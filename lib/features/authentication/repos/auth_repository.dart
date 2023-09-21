@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_naver_login/flutter_naver_login.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -13,10 +12,6 @@ class AuthRepository {
       aOptions: AndroidOptions(
     encryptedSharedPreferences: true,
   ));
-
-  AuthRepository() {
-    _dio.options.baseUrl = dotenv.env['API_HOST']!;
-  }
 
   Future<String?> getAccessToken() =>
       _flutterSecureStorage.read(key: _accessTokenStorageKey);
