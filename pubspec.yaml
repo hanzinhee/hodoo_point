@@ -55,6 +55,8 @@ dependencies:
   just_toast: ^0.0.3
   flutter_secure_storage: ^9.0.0
   flutter_dotenv: ^5.1.0
+  store_redirect: ^2.0.1
+  device_apps: ^2.2.0
 
 dev_dependencies:
   flutter_test:
