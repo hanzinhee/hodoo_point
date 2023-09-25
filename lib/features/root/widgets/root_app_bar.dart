@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hodoo_point/features/menu/views/menu_screen.dart';
 import 'package:hodoo_point/features/notifications/notifications_screen.dart';
+import 'package:hodoo_point/features/setting/setting_screen.dart';
 import 'package:hodoo_point/utils/unicons.dart';
 
 class RootAppBar extends StatelessWidget {
@@ -32,9 +32,9 @@ class RootAppBar extends StatelessWidget {
       actions: [
         if (actions != null) ...actions!,
         IconButton(
-          icon: Unicons.svg('fi-rr-menu-burger'),
+          icon: Unicons.svg('fi-rr-settings'),
           onPressed: () {
-            context.push(MenuScreen.routePath);
+            context.push(SettingScreen.routePath);
           },
         ),
       ],
