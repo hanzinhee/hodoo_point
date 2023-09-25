@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/features/authentication/views/sign_up_screen.dart';
 import 'package:hodoo_point/features/home/views/home_screen.dart';
-import 'package:hodoo_point/features/my_page/my_page_screen.dart';
+import 'package:hodoo_point/features/my_page/views/my_page_screen.dart';
 import 'package:hodoo_point/features/notice/views/notice_detail_screen.dart';
 import 'package:hodoo_point/features/notice/views/notice_screen.dart';
 import 'package:hodoo_point/features/payment/views/payment_screen.dart';
