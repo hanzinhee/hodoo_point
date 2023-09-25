@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hodoo_point/constants/gaps.dart';
-import 'package:hodoo_point/features/authentication/states/auth_notifier.dart';
 import 'package:hodoo_point/features/root/widgets/root_app_bar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -20,7 +19,6 @@ class _MyPageScreenState extends ConsumerState<MyPageScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final members = ref.watch(authProvider);
     return Scaffold(
         body: CustomScrollView(
       slivers: [
